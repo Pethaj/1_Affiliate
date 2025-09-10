@@ -911,6 +911,62 @@
             margin: 0;
             font-weight: 500;
         }
+
+        /* Styly pro ebook checkbox */
+        #ebook-checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        #ebook-checkbox-container:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        #want-ebook {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: transparent;
+            position: relative;
+            margin: 0;
+            flex-shrink: 0;
+        }
+        
+        #want-ebook:checked {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+        
+        #want-ebook:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        #ebook-checkbox-container label {
+            cursor: pointer;
+            margin: 0;
+            font-size: 16px;
+            color: white;
+            line-height: 1.4;
+            flex: 1;
+        }
         .coffee-submit-btn {
             width: 100%;
             padding: 18px;
@@ -923,6 +979,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(217, 162, 138, 0.4);
+            margin-top: 30px;
         }
         .coffee-submit-btn:hover {
             transform: translateY(-2px);
@@ -944,6 +1001,59 @@
                 margin: 0 15px;
             }
         }
+
+        /* === AFFILIATE FORMULÁŘ LAYOUT === */
+        .affiliate-form-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px; /* Větší mezera mezi textem a formulářem */
+        }
+
+        .affiliate-form-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .affiliate-form-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .affiliate-form-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Responzivní design pro mobily */
+        @media (max-width: 968px) {
+            .affiliate-form-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-top: 40px;
+            }
+            
+            /* Na mobilu bude obrázek nahoře */
+            .affiliate-form-image {
+                order: 1;
+            }
+            
+            .affiliate-form-content {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .affiliate-form-layout {
+                gap: 30px;
+                margin-top: 30px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -980,7 +1090,7 @@
                     </div>
                     <div class="benefit-item">
                         <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" /></svg></div>
-                        <h3>Žádné minimální odběry</h3>
+                        <h3>Žádné minimální obraty</h3>
                         <p>Je jen na vás, jak moc aktivní budete.</p>
                     </div>
                     <div class="benefit-item">
@@ -997,7 +1107,7 @@
                 
                 <!-- CTA Tlačítko -->
                 <div style="text-align: center; margin-top: 40px;">
-                    <a href="#" class="btn btn-primary">Začít vydělávat</a>
+                    <a href="#formular" class="btn btn-primary">Začít vydělávat</a>
                 </div>
                
 <!-- BĚHACÍ TEXT PO KŘIVCE (OPRAVENÁ VERZE) -->
@@ -1268,16 +1378,6 @@
                             </div>
                         </div>
                         
-                        <div class="coffee-preferences">
-                            <div class="coffee-preference-item">
-                                <input type="checkbox" id="visitOstrava" name="preferences" value="visit">
-                                <label for="visitOstrava">Stavím se na kávu do Ostravy</label>
-                            </div>
-                            <div class="coffee-preference-item">
-                                <input type="checkbox" id="phoneCall" name="preferences" value="call">
-                                <label for="phoneCall">Raději si zavoláme</label>
-                            </div>
-                        </div>
                         
                         <button type="submit" class="coffee-submit-btn">Kontaktujte mě</button>
                     </form>
@@ -1435,21 +1535,49 @@
 
         <section class="section contact-form" id="formular">
             <div class="container">
-                <div class="form-container">
-                    <div class="form-image">
+                <h2>Udělejte první krok ještě dnes. S naším ebookem dostaneš konkrétní návod.</h2>
+                <p class="intro-text">Zaškrtněte pole níže a my vám zdarma pošleme konkrétní návod krok za krokem, jak dosáhnout konzistentních výdělků. Jedná se o detailní manuál na rentu, který vám ukáže přesně, jak začít a jak si vybudovat pasivní příjem.</p>
+                
+                <div class="affiliate-form-layout">
+                    <div class="affiliate-form-image">
                         <img src="https://i.postimg.cc/0Nxp56S5/20250711-1237-Moderni-Kniha-Mockup-simple-compose-01jzwgwr4afyzvdb5qdd9xc4y4.png" alt="Moderní kniha - E-book">
                     </div>
-                    <div class="form-content">
-                        <h2>Udělejte první krok ještě dnes. S naším ebookem dostaneš konkrétní návod.</h2>
-                        <p>Zaškrtněte pole níže a my vám zdarma pošleme konkrétní návod krok za krokem, jak dosáhnout konzistentních výdělků. Jedná se o detailní manuál na rentu, který vám ukáže přesně, jak začít a jak si vybudovat pasivní příjem.</p>
-                        <form action="#" method="POST">
-                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 8px; cursor: pointer;" id="ebook-checkbox-container">
-                                <input type="checkbox" id="want-ebook" name="want-ebook" style="width: 20px; height: 20px; cursor: pointer;" required>
-                                <label for="want-ebook" style="cursor: pointer; margin: 0; font-size: 16px;">Chci ebook manuál na rentu</label>
-                            </div>
-                            <a href="https://bewit.love/gb/affiliate-spoluprace-s-bewit/" target="_blank" class="btn btn-primary" style="width: 100%; text-decoration: none; display: block; text-align: center;">Začít s affiliate programem</a>
-                        </form>
-                        <p class="bonus-text"><strong>BONUS:</strong> Jako dárek vám pošleme náš E-book "Jak Bewit pomůže rozjet váš internetový obchod" plný tipů a triků.</p>
+                    
+                    <div class="affiliate-form-content">
+                        <div class="coffee-form-container">
+                            <form action="#" method="POST" id="affiliate-form">
+                                <div class="coffee-form-row">
+                                    <div class="coffee-form-group">
+                                        <label for="first-name">Jméno *</label>
+                                        <input type="text" id="first-name" name="first-name" placeholder="Vaše jméno" required>
+                                    </div>
+                                    <div class="coffee-form-group">
+                                        <label for="last-name">Příjmení *</label>
+                                        <input type="text" id="last-name" name="last-name" placeholder="Vaše příjmení" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="coffee-form-row">
+                                    <div class="coffee-form-group">
+                                        <label for="email">E-mail *</label>
+                                        <input type="email" id="email" name="email" placeholder="vas@email.cz" required>
+                                    </div>
+                                    <div class="coffee-form-group">
+                                        <label for="phone">Telefon *</label>
+                                        <input type="tel" id="phone" name="phone" placeholder="+420 123 456 789" required>
+                                    </div>
+                                </div>
+                                
+                                <div id="ebook-checkbox-container">
+                                    <input type="checkbox" id="want-ebook" name="want-ebook" required>
+                                    <label for="want-ebook">Chci ebook manuál na rentu</label>
+                                </div>
+                                
+                                <button type="submit" class="coffee-submit-btn">Začít s affiliate programem</button>
+                            </form>
+                            
+                            <p class="bonus-text"><strong>BONUS:</strong> Jako dárek vám pošleme náš E-book "Jak Bewit pomůže rozjet váš internetový obchod" plný tipů a triků.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1675,6 +1803,202 @@
     setTimeout(onScroll, 400);
 })();
 
+// === SYSTÉM GENEROVÁNÍ ID ZÁKAZNÍKA ===
+(function() {
+    // ===========================================
+    // GENEROVÁNÍ A SPRÁVA ID ZÁKAZNÍKA
+    // ===========================================
+    
+    // Generování unikátního ID zákazníka
+    function generateCustomerId() {
+        // Kombinace timestamp a náhodného čísla pro jedinečnost
+        const timestamp = Date.now().toString(36);
+        const random = Math.random().toString(36).substr(2, 9);
+        return `customer_${timestamp}_${random}`;
+    }
+    
+    // Získání nebo vytvoření ID zákazníka
+    function getOrCreateCustomerId() {
+        let customerId = localStorage.getItem('bewitCustomerId');
+        
+        if (!customerId) {
+            customerId = generateCustomerId();
+            localStorage.setItem('bewitCustomerId', customerId);
+            console.log('Nové ID zákazníka vygenerováno:', customerId);
+        } else {
+            console.log('Existující ID zákazníka načteno:', customerId);
+        }
+        
+        return customerId;
+    }
+    
+    // Přidání event listenerů na všechna akční tlačítka (kromě affiliate tlačítka)
+    function setupCustomerIdTracking() {
+        // Najdeme všechna akční tlačítka kromě affiliate tlačítka (to má vlastní webhook handler)
+        const actionButtons = document.querySelectorAll('a[href="#formular"], .btn-primary[href="#formular"], .coffee-submit-btn');
+        
+        actionButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Generujeme nebo získáme ID zákazníka při každém kliknutí
+                const customerId = getOrCreateCustomerId();
+                
+                console.log('Kliknuto na akční tlačítko, ID zákazníka:', customerId);
+            });
+        });
+    }
+    
+    // Globální funkce pro získání ID zákazníka (pro použití v dalších skriptech)
+    window.getBewitCustomerId = getOrCreateCustomerId;
+    
+    // Inicializace po načtení DOM
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializujeme ID zákazníka hned při načtení stránky
+        getOrCreateCustomerId();
+        
+        // Nastavíme tracking pro tlačítka
+        setupCustomerIdTracking();
+    });
+})();
+
+// === AFFILIATE PROGRAM REGISTRATION WEBHOOK ===
+(function() {
+    // ===========================================
+    // KONFIGURACE WEBHOOKU PRO AFFILIATE REGISTRACI
+    // ===========================================
+    const AFFILIATE_WEBHOOK_CONFIG = {
+        // URL webhooku pro affiliate registrace
+        url: 'https://n8n.srv980546.hstgr.cloud/webhook-test/d8c556b6-eb98-4227-8204-6b2110675513', // Webhook pro affiliate program
+        
+        // Tagy pro affiliate registraci
+        tags: [
+            'Affiliate', // Hlavní tag stejný jako u kavy
+            'register_universal'  // Subtag pro registraci
+        ].filter(tag => tag.length > 0),
+        
+        // Metoda HTTP
+        method: 'POST',
+        
+        // Hlavičky
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    };
+
+    // Funkce pro formátování data
+    function formatClickDate() {
+        const now = new Date();
+        const day = now.getDate();
+        const month = now.getMonth() + 1;
+        const year = now.getFullYear();
+        return `${day}.${month}.${year}`;
+    }
+
+    // Inicializace po načtení DOM
+    function initAffiliateForm() {
+        // Nalezení formuláře "Začít s affiliate programem"
+        const affiliateForm = document.querySelector('#affiliate-form');
+        
+        console.log('🔍 Hledám affiliate formulář...', affiliateForm ? 'NALEZEN' : 'NENALEZEN');
+        
+        if (affiliateForm) {
+            console.log('✅ Affiliate formulář nalezen, přidávám event listener');
+            affiliateForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Zastavíme defaultní chování
+                
+                // Získáme data z formuláře
+                const formData = new FormData(this);
+                const firstName = formData.get('first-name');
+                const lastName = formData.get('last-name');
+                const email = formData.get('email');
+                const phone = formData.get('phone');
+                const wantEbook = formData.get('want-ebook');
+                
+                // Validace formuláře
+                if (!firstName || !lastName || !email || !phone || !wantEbook) {
+                    alert('Prosím vyplňte všechna povinná pole a zaškrtněte souhlas s ebookem.');
+                    return;
+                }
+                
+                // Získáme ID zákazníka
+                const customerId = window.getBewitCustomerId ? window.getBewitCustomerId() : null;
+                
+                // Příprava dat pro webhook
+                const webhookData = {
+                    // ID zákazníka
+                    customerId: customerId,
+                    
+                    // Data z formuláře
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phone: phone,
+                    wantEbook: !!wantEbook,
+                    
+                    // Datum registrace
+                    registrationDate: formatClickDate(),
+                    
+                    // Tagy
+                    tags: AFFILIATE_WEBHOOK_CONFIG.tags,
+                    
+                    // Metadata
+                    timestamp: new Date().toISOString(),
+                    source: 'affiliate_registration_form',
+                    action: 'affiliate_program_registration',
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                };
+                
+                console.log('🚀 Odesílám affiliate registraci na webhook:', AFFILIATE_WEBHOOK_CONFIG.url);
+                console.log('📦 Data:', webhookData);
+                
+                // Odeslání na webhook
+                fetch(AFFILIATE_WEBHOOK_CONFIG.url, {
+                    method: AFFILIATE_WEBHOOK_CONFIG.method,
+                    headers: AFFILIATE_WEBHOOK_CONFIG.headers,
+                    body: JSON.stringify(webhookData)
+                })
+                .then(response => {
+                    console.log('✅ Affiliate webhook response status:', response.status);
+                    console.log('📊 Affiliate webhook response:', response);
+                    
+                    if (response.ok) {
+                        console.log('✅ Webhook úspěšně odeslán');
+                    } else {
+                        console.warn('⚠️ Webhook response není OK:', response.statusText);
+                    }
+                    
+                    // Pokračujeme na děkovnou stránku s ID zákazníka
+                    const url = new URL('thank-you.html', window.location.href);
+                    if (customerId) {
+                        url.searchParams.set('customerId', customerId);
+                    }
+                    window.location.href = url.toString();
+                })
+                .catch(error => {
+                    console.error('❌ Chyba při odesílání affiliate webhooku:', error);
+                    console.error('🔍 Detaily chyby:', error.message);
+                    
+                    // I při chybě pokračujeme na děkovnou stránku
+                    const url = new URL('thank-you.html', window.location.href);
+                    if (customerId) {
+                        url.searchParams.set('customerId', customerId);
+                    }
+                    window.location.href = url.toString();
+                });
+            });
+        } else {
+            console.warn('⚠️ Affiliate formulář nebyl nalezen!');
+        }
+    }
+    
+    // Spuštění inicializace po načtení DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAffiliateForm);
+    } else {
+        initAffiliateForm();
+    }
+})();
+
 // === COFFEE INVITATION FORM ===
 (function() {
     // ===========================================
@@ -1778,35 +2102,33 @@
         }
     });
     
-    // Zajištění, že je vybrána alespoň jedna preference
-    function validatePreferences() {
-        const visitOstrava = document.getElementById('visitOstrava');
-        const phoneCall = document.getElementById('phoneCall');
-        
-        return visitOstrava.checked || phoneCall.checked;
-    }
     
+    // Funkce pro formátování data
+    function formatClickDate() {
+        const now = new Date();
+        const day = now.getDate();
+        const month = now.getMonth() + 1;
+        const year = now.getFullYear();
+        return `${day}.${month}.${year}`;
+    }
+
     // Příprava dat pro webhook
     function prepareWebhookData(formData) {
-        const visitOstrava = document.getElementById('visitOstrava').checked;
-        const phoneCall = document.getElementById('phoneCall').checked;
-        
-        // Určení preferencí
-        const preferences = [];
-        if (visitOstrava) preferences.push('visit_ostrava');
-        if (phoneCall) preferences.push('phone_call');
         
         // Sestavení dat pro webhook
         const webhookData = {
+            // ID zákazníka
+            customerId: window.getBewitCustomerId ? window.getBewitCustomerId() : null,
+            
+            // Datum odeslání formuláře
+            clickDate: formatClickDate(),
+            
             // Základní údaje z formuláře
             firstName: formData.get('firstName'),
             lastName: formData.get('lastName'),
             email: formData.get('email'),
             phone: formData.get('phone'),
             region: formData.get('region'),
-            
-            // Preference
-            preferences: preferences,
             
             // Tagy
             tags: WEBHOOK_CONFIG.tags,
@@ -1881,27 +2203,6 @@
             isValid = false;
         }
         
-        // Validace preferencí
-        if (!validatePreferences()) {
-            const preferencesContainer = document.querySelector('.coffee-preferences');
-            let errorDiv = preferencesContainer.querySelector('.error-message');
-            
-            if (!errorDiv) {
-                errorDiv = document.createElement('div');
-                errorDiv.className = 'error-message';
-                errorDiv.style.cssText = 'color: #ff6b6b; font-size: 14px; margin-top: 10px; text-align: center; font-weight: 500;';
-                preferencesContainer.appendChild(errorDiv);
-            }
-            
-            errorDiv.textContent = 'Vyberte alespoň jednu možnost kontaktu';
-            isValid = false;
-        } else {
-            // Odstraň chybovou hlášku pro preference
-            const errorDiv = document.querySelector('.coffee-preferences .error-message');
-            if (errorDiv) {
-                errorDiv.remove();
-            }
-        }
         
         if (!isValid) {
             // Scroll k prvnímu chybnému poli
@@ -2095,11 +2396,6 @@
                 item.style.borderColor = '';
             }
             
-            // Odstraň chybovou hlášku pro preference při změně
-            const errorDiv = document.querySelector('.coffee-preferences .error-message');
-            if (errorDiv && validatePreferences()) {
-                errorDiv.remove();
-            }
         });
     });
 

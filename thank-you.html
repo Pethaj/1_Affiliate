@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Děkujeme za váš zájem | Bewit Affiliate Program</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === DESIGN SYSTÉM === */
+        :root {
+            --color-primary: #6B7A6A;      /* Šalvějově zelená */
+            --color-accent: #D9A28A;       /* Terakotová/Růžová */
+            --color-background: #FBF9F6;   /* Velmi světlá béžová */
+            --color-text: #4E4E4E;         /* Tmavě šedá/hnědá */
+            --color-white: #FFFFFF;
+            --color-border: #EAE3DC;
+            --color-success: #4CAF50;
+
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+
+            --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 12px;
+        }
+
+        /* === ZÁKLADNÍ RESET A STYLY === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            line-height: 1.7;
+            font-size: 17px;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* === KONTEJNER A SEKCE === */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        /* === TYPOGRAFIE === */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--color-white);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 { 
+            font-size: 42px; 
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 { 
+            font-size: 32px; 
+            text-align: center; 
+            margin-bottom: 40px; 
+        }
+        h3 { 
+            font-size: 22px; 
+            font-family: var(--font-body); 
+            font-weight: 600; 
+            color: var(--color-text);
+            margin-bottom: 20px;
+        }
+        p { 
+            margin-bottom: 1rem; 
+            text-align: center;
+        }
+
+        /* === DĚKOVNÁ SEKCE === */
+        .thank-you-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-subtle);
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--color-success);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        /* === FORMULÁŘ STYLY === */
+        .survey-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-subtle);
+            padding: 50px 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--color-white);
+            font-size: 18px;
+        }
+
+        /* === TEXTOVÉ POLE === */
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: var(--font-body);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+
+        /* === BAREVNÉ ZAŠKRTÁVACÍ POLE === */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"],
+        .checkbox-item input[type="radio"] {
+            display: none;
+        }
+
+        .checkbox-item .checkbox-label {
+            display: inline-block;
+            padding: 12px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkbox-label,
+        .checkbox-item input[type="radio"]:checked + .checkbox-label {
+            background-color: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(217, 162, 138, 0.3);
+        }
+
+        .checkbox-item .checkbox-label:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-1px);
+        }
+
+        /* === POSUVNÍK === */
+        .slider-group {
+            margin-top: 20px;
+        }
+
+        .slider-container {
+            position: relative;
+            margin: 20px 0 30px 0;
+        }
+
+        .slider {
+            width: 60%;
+            height: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            appearance: none;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            border: 3px solid white;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--color-white);
+        }
+
+        .slider-value {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--color-white);
+            font-size: 18px;
+        }
+
+        /* === RADIO TLAČÍTKA === */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .radio-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio-item input[type="radio"] {
+            display: none;
+        }
+
+        .radio-item .radio-label {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .radio-item input[type="radio"]:checked + .radio-label {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(107, 122, 106, 0.3);
+        }
+
+        .radio-item .radio-label:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-1px);
+        }
+
+        /* === TLAČÍTKO === */
+        .btn {
+            padding: 18px 40px;
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 40px auto 0;
+            box-shadow: 0 4px 10px rgba(217, 162, 138, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(217, 162, 138, 0.5);
+            background-color: #c8916f;
+        }
+
+        /* === RESPONZIVNÍ DESIGN === */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            .thank-you-section,
+            .survey-form {
+                padding: 30px 20px;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .checkmark {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- === DĚKOVNÁ SEKCE === -->
+        <section class="section">
+            <div class="thank-you-section">
+                <div class="checkmark">✓</div>
+                <h1>Děkujeme za váš zájem!</h1>
+                <p style="font-size: 20px; margin-bottom: 30px;">Těšíme se na spolupráci s vámi v rámci našeho affiliate programu.</p>
+                <p style="font-size: 18px; color: var(--color-white); opacity: 0.9;">Prosíme ještě pár vteřin k vyplnění dotazníku.</p>
+            </div>
+
+            <!-- === DOTAZNÍK === -->
+            <div class="survey-form">
+                <h2>Dotazník pro nové partnery</h2>
+                
+                <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook-test/a41e8f87-dc1d-4aab-beaa-6c81f320b437">
+                    
+                    <!-- Profese -->
+                    <div class="form-group">
+                        <label for="profession">Jaká je vaše profese?</label>
+                        <input type="text" id="profession" name="profession" placeholder="Napište vaši profesi..." required>
+                    </div>
+
+                    <!-- Velikost prodejní sítě -->
+                    <div class="form-group">
+                        <label>Jak velká je vaše prodejní síť?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-zacatecnik" name="network-size" value="zacatecnik" required>
+                                <label for="network-zacatecnik" class="checkbox-label">Začátečník (0-50 kontaktů)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-mala" name="network-size" value="mala" required>
+                                <label for="network-mala" class="checkbox-label">Malá síť (50-200 kontaktů)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-stredni" name="network-size" value="stredni" required>
+                                <label for="network-stredni" class="checkbox-label">Střední síť (200-1000 kontaktů)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-velka" name="network-size" value="velka" required>
+                                <label for="network-velka" class="checkbox-label">Velká síť (1000-5000 kontaktů)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-velmi-velka" name="network-size" value="velmi-velka" required>
+                                <label for="network-velmi-velka" class="checkbox-label">Velmi velká síť (5000+ kontaktů)</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Způsob propagace -->
+                    <div class="form-group">
+                        <label>Jak nás chcete propagovat?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="social-media" name="promotion[]" value="socialni-site">
+                                <label for="social-media" class="checkbox-label">Sociální sítě</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="own-website" name="promotion[]" value="vlastni-web">
+                                <label for="own-website" class="checkbox-label">Vlastní web</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="articles" name="promotion[]" value="psani-clanku">
+                                <label for="articles" class="checkbox-label">Psaní článků</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="youtube" name="promotion[]" value="youtube">
+                                <label for="youtube" class="checkbox-label">YouTube</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="direct-sales" name="promotion[]" value="primy-prodej">
+                                <label for="direct-sales" class="checkbox-label">Přímý prodej</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typ obsahu -->
+                    <div class="form-group">
+                        <label>Jaký typ obsahu plánujete tvořit?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="content-video" name="content-type[]" value="video">
+                                <label for="content-video" class="checkbox-label">Video</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="content-clanky" name="content-type[]" value="clanky">
+                                <label for="content-clanky" class="checkbox-label">Články</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="content-stories" name="content-type[]" value="stories">
+                                <label for="content-stories" class="checkbox-label">Stories</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="content-podcasty" name="content-type[]" value="podcasty">
+                                <label for="content-podcasty" class="checkbox-label">Podcasty</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="content-jine" name="content-type[]" value="jine">
+                                <label for="content-jine" class="checkbox-label">Jiné</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Investice do propagace -->
+                    <div class="form-group">
+                        <label>Kolik do propagace plánujete investovat měsíčně? (v Kč)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="radio" id="investment-0" name="monthly-investment" value="0" required>
+                                <label for="investment-0" class="checkbox-label">0,- Kč</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="investment-10000" name="monthly-investment" value="do-10000" required>
+                                <label for="investment-10000" class="checkbox-label">do 10 000,- Kč</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="investment-30000" name="monthly-investment" value="do-30000" required>
+                                <label for="investment-30000" class="checkbox-label">do 30 000,- Kč</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="investment-nad30000" name="monthly-investment" value="nad-30000" required>
+                                <label for="investment-nad30000" class="checkbox-label">nad 30 000,- Kč</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Roky v affiliate -->
+                    <div class="form-group">
+                        <label for="affiliate-years">Kolik let se pohybujete v affiliate sféře?</label>
+                        <div class="slider-group">
+                            <div class="slider-container">
+                                <input type="range" min="1" max="10" value="1" class="slider" id="affiliate-years" name="affiliate-years">
+                                <div class="slider-labels">
+                                    <span>1 rok</span>
+                                    <span>10+ let</span>
+                                </div>
+                                <div class="slider-value" id="years-value">1 rok</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Očekávaný výsledek -->
+                    <div class="form-group">
+                        <label for="expected-result">Jaký reálný výsledek očekáváte od spolupráce? (v Kč)</label>
+                        <div class="slider-group">
+                            <div class="slider-container">
+                                <input type="range" min="1" max="4" value="1" class="slider" id="expected-result" name="expected-result">
+                                <div class="slider-labels">
+                                    <span>do 10 000,-</span>
+                                    <span>nad 60 000,-</span>
+                                </div>
+                                <div class="slider-value" id="result-value">do 10 000,- Kč</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Osobní setkání -->
+                    <div class="form-group">
+                        <label>Máte zájem o osobní setkání?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="meeting-yes" name="personal-meeting" value="ano" required>
+                                <label for="meeting-yes" class="radio-label">Ano</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="meeting-no" name="personal-meeting" value="ne" required>
+                                <label for="meeting-no" class="radio-label">Ne</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn">Odeslat dotazník</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // === POSUVNÍK PRO ROKY V AFFILIATE === 
+        const yearsSlider = document.getElementById('affiliate-years');
+        const yearsValue = document.getElementById('years-value');
+
+        yearsSlider.addEventListener('input', function() {
+            const value = parseInt(this.value);
+            if (value === 10) {
+                yearsValue.textContent = '10+ let';
+            } else {
+                yearsValue.textContent = value + (value === 1 ? ' rok' : value <= 4 ? ' roky' : ' let');
+            }
+        });
+
+        // === POSUVNÍK PRO OČEKÁVANÝ VÝSLEDEK === 
+        const resultSlider = document.getElementById('expected-result');
+        const resultValue = document.getElementById('result-value');
+
+        const resultRanges = [
+            'do 10 000,- Kč',
+            '10 000 - 30 000,- Kč', 
+            '30 000 - 60 000,- Kč',
+            'nad 60 000,- Kč'
+        ];
+
+        resultSlider.addEventListener('input', function() {
+            const value = parseInt(this.value) - 1; // převod na index pole
+            resultValue.textContent = resultRanges[value];
+        });
+
+        // === SYSTÉM ID ZÁKAZNÍKA ===
+        function getCustomerId() {
+            // Zkusíme získat ID z URL parametrů
+            const urlParams = new URLSearchParams(window.location.search);
+            let customerId = urlParams.get('customerId');
+            
+            // Pokud není v URL, zkusíme localStorage
+            if (!customerId) {
+                customerId = localStorage.getItem('bewitCustomerId');
+            }
+            
+            // Pokud stále nemáme ID, vygenerujeme nové (záložní řešení)
+            if (!customerId) {
+                const timestamp = Date.now().toString(36);
+                const random = Math.random().toString(36).substr(2, 9);
+                customerId = `customer_${timestamp}_${random}`;
+                localStorage.setItem('bewitCustomerId', customerId);
+                console.log('Nové záložní ID zákazníka vygenerováno:', customerId);
+            } else {
+                console.log('ID zákazníka na děkovné stránce:', customerId);
+            }
+            
+            return customerId;
+        }
+
+        // Funkce pro formátování data
+        function formatClickDate() {
+            const now = new Date();
+            const day = now.getDate();
+            const month = now.getMonth() + 1;
+            const year = now.getFullYear();
+            return `${day}.${month}.${year}`;
+        }
+
+        // === FORMULÁŘ ODESLÁNÍ ===
+        document.getElementById('affiliate-survey').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            // Převod FormData na obyčejný objekt pro lepší zpracování
+            const data = {};
+            
+            // Přidání ID zákazníka
+            data.customerId = getCustomerId();
+            
+            // Přidání data odeslání formuláře
+            data.clickDate = formatClickDate();
+            
+            // Přidání tagů
+            data.tags = ['Affiliate', 'survey_completed'];
+            
+            // Zpracování standardních polí
+            for (let [key, value] of formData.entries()) {
+                if (key.endsWith('[]')) {
+                    // Pro pole s více hodnotami (checkboxy)
+                    const cleanKey = key.replace('[]', '');
+                    if (!data[cleanKey]) {
+                        data[cleanKey] = [];
+                    }
+                    data[cleanKey].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Převod hodnot posuvníků na lidsky čitelné texty
+            if (data['affiliate-years']) {
+                const years = parseInt(data['affiliate-years']);
+                if (years === 10) {
+                    data['affiliate-years-text'] = '10+ let';
+                } else {
+                    data['affiliate-years-text'] = years + (years === 1 ? ' rok' : years <= 4 ? ' roky' : ' let');
+                }
+            }
+            
+            if (data['expected-result']) {
+                const resultRanges = [
+                    'do 10 000,- Kč',
+                    '10 000 - 30 000,- Kč', 
+                    '30 000 - 60 000,- Kč',
+                    'nad 60 000,- Kč'
+                ];
+                const resultIndex = parseInt(data['expected-result']) - 1;
+                data['expected-result-text'] = resultRanges[resultIndex];
+            }
+            
+            // Odeslání dat na webhook
+            fetch('https://n8n.srv980546.hstgr.cloud/webhook-test/a41e8f87-dc1d-4aab-beaa-6c81f320b437', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Děkujeme za vyplnění dotazníku! Brzy se vám ozveme s dalšími informacemi.');
+                    // Případně přesměrování
+                    // window.location.href = 'confirmation.html';
+                } else {
+                    throw new Error('Chyba při odesílání');
+                }
+            })
+            .catch(error => {
+                console.error('Chyba:', error);
+                alert('Došlo k chybě při odesílání dotazníku. Zkuste to prosím znovu.');
+            });
+        });
+
+        // === ANIMACE PO NAČTENÍ STRÁNKY ===
+        document.addEventListener('DOMContentLoaded', function() {
+            const thankYouSection = document.querySelector('.thank-you-section');
+            const surveyForm = document.querySelector('.survey-form');
+            
+            setTimeout(() => {
+                thankYouSection.style.opacity = '0';
+                thankYouSection.style.transform = 'translateY(-20px)';
+                thankYouSection.style.transition = 'all 0.5s ease';
+                thankYouSection.style.opacity = '1';
+                thankYouSection.style.transform = 'translateY(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                surveyForm.style.opacity = '0';
+                surveyForm.style.transform = 'translateY(20px)';
+                surveyForm.style.transition = 'all 0.5s ease';
+                surveyForm.style.opacity = '1';
+                surveyForm.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
