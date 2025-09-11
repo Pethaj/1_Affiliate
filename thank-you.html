@@ -334,6 +334,72 @@
             background-color: #c8916f;
         }
 
+        /* === PROGRESS BAR === */
+        .progress-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .progress-bar:hover {
+            transform: scale(1.05);
+        }
+
+        .progress-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--color-accent) var(--progress-angle, 0deg),
+                rgba(255, 255, 255, 0.2) 0deg
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .progress-circle::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .progress-percentage {
+            font-size: 18px;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
         /* === RESPONZIVNÍ DESIGN === */
         @media (max-width: 768px) {
             .container {
@@ -368,10 +434,45 @@
                 height: 60px;
                 font-size: 30px;
             }
+
+            .progress-bar {
+                top: 15px;
+                right: 15px;
+                width: 80px;
+                height: 80px;
+            }
+
+            .progress-circle {
+                width: 80px;
+                height: 80px;
+            }
+
+            .progress-circle::before {
+                width: 64px;
+                height: 64px;
+            }
+
+            .progress-percentage {
+                font-size: 16px;
+            }
+
+            .progress-label {
+                font-size: 9px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- === PROGRESS BAR === -->
+    <div class="progress-bar" id="progressBar">
+        <div class="progress-circle" id="progressCircle">
+            <div class="progress-text">
+                <div class="progress-percentage" id="progressPercentage">0%</div>
+                <div class="progress-label">HOTOVO</div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- === DĚKOVNÁ SEKCE === -->
         <section class="section">
@@ -477,7 +578,7 @@
 
                     <!-- Investice do propagace -->
                     <div class="form-group">
-                        <label>Kolik do propagace plánujete investovat měsíčně? (v Kč)</label>
+                        <label>Jaký rozpočet plánujete pro propagaci měsíčně? (v Kč)</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="radio" id="investment-0" name="monthly-investment" value="0" required>
@@ -500,7 +601,7 @@
 
                     <!-- Roky v affiliate -->
                     <div class="form-group">
-                        <label for="affiliate-years">Kolik let se pohybujete v affiliate sféře?</label>
+                        <label for="affiliate-years">Kolik let se pohybujete v obchodní sféře?</label>
                         <div class="slider-group">
                             <div class="slider-container">
                                 <input type="range" min="1" max="10" value="1" class="slider" id="affiliate-years" name="affiliate-years">
@@ -515,7 +616,7 @@
 
                     <!-- Očekávaný výsledek -->
                     <div class="form-group">
-                        <label for="expected-result">Jaký reálný výsledek očekáváte od spolupráce? (v Kč)</label>
+                        <label for="expected-result">Jaký reálný měsíčnívýsledek očekáváte od spolupráce? (v Kč)</label>
                         <div class="slider-group">
                             <div class="slider-container">
                                 <input type="range" min="1" max="4" value="1" class="slider" id="expected-result" name="expected-result">
@@ -550,6 +651,94 @@
     </div>
 
     <script>
+        // === PROGRESS BAR LOGIKA ===
+        function updateProgressBar() {
+            const totalSections = 8; // Celkový počet sekcí formuláře
+            let completedSections = 0;
+            
+            // 1. Profese (textové pole)
+            const profession = document.getElementById('profession');
+            if (profession.value.trim() !== '') {
+                completedSections++;
+            }
+            
+            // 2. Velikost sítě (radio buttons)
+            const networkSize = document.querySelector('input[name="network-size"]:checked');
+            if (networkSize) {
+                completedSections++;
+            }
+            
+            // 3. Způsob propagace (checkboxy)
+            const promotion = document.querySelectorAll('input[name="promotion[]"]:checked');
+            if (promotion.length > 0) {
+                completedSections++;
+            }
+            
+            // 4. Typ obsahu (checkboxy)
+            const contentType = document.querySelectorAll('input[name="content-type[]"]:checked');
+            if (contentType.length > 0) {
+                completedSections++;
+            }
+            
+            // 5. Investice (radio buttons)
+            const investment = document.querySelector('input[name="monthly-investment"]:checked');
+            if (investment) {
+                completedSections++;
+            }
+            
+            // 6. Roky v affiliate (posuvník)
+            const affiliateYears = document.getElementById('affiliate-years');
+            if (affiliateYears.value > 1) {
+                completedSections++;
+            }
+            
+            // 7. Očekávaný výsledek (posuvník)
+            const expectedResult = document.getElementById('expected-result');
+            if (expectedResult.value > 1) {
+                completedSections++;
+            }
+            
+            // 8. Osobní setkání (radio buttons)
+            const personalMeeting = document.querySelector('input[name="personal-meeting"]:checked');
+            if (personalMeeting) {
+                completedSections++;
+            }
+            
+            // Výpočet procent
+            const percentage = Math.round((completedSections / totalSections) * 100);
+            const angle = (completedSections / totalSections) * 360;
+            
+            // Update progress bar
+            const progressCircle = document.getElementById('progressCircle');
+            const progressPercentage = document.getElementById('progressPercentage');
+            
+            progressCircle.style.setProperty('--progress-angle', angle + 'deg');
+            progressPercentage.textContent = percentage + '%';
+            
+            return percentage;
+        }
+
+        // Funkce pro přidání event listenerů na všechny inputy
+        function addProgressTrackingListeners() {
+            // Textové pole
+            document.getElementById('profession').addEventListener('input', updateProgressBar);
+            
+            // Radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', updateProgressBar);
+            });
+            
+            // Checkboxy
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgressBar);
+            });
+            
+            // Posuvníky
+            document.querySelectorAll('input[type="range"]').forEach(slider => {
+                slider.addEventListener('input', updateProgressBar);
+            });
+        }
+
         // === POSUVNÍK PRO ROKY V AFFILIATE === 
         const yearsSlider = document.getElementById('affiliate-years');
         const yearsValue = document.getElementById('years-value');
@@ -691,6 +880,10 @@
 
         // === ANIMACE PO NAČTENÍ STRÁNKY ===
         document.addEventListener('DOMContentLoaded', function() {
+            // Inicializace progress tracking
+            addProgressTrackingListeners();
+            updateProgressBar(); // Počáteční stav
+            
             const thankYouSection = document.querySelector('.thank-you-section');
             const surveyForm = document.querySelector('.survey-form');
             

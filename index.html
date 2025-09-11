@@ -1569,14 +1569,14 @@
                                 </div>
                                 
                                 <div id="ebook-checkbox-container">
-                                    <input type="checkbox" id="want-ebook" name="want-ebook" required>
+                                    <input type="checkbox" id="want-ebook" name="want-ebook">
                                     <label for="want-ebook">Chci ebook manuál na rentu</label>
                                 </div>
                                 
                                 <button type="submit" class="coffee-submit-btn">Začít s affiliate programem</button>
                             </form>
                             
-                            <p class="bonus-text"><strong>BONUS:</strong> Jako dárek vám pošleme náš E-book "Jak Bewit pomůže rozjet váš internetový obchod" plný tipů a triků.</p>
+                            <!-- <p class="bonus-text"><strong>BONUS:</strong> Jako dárek vám pošleme náš E-book "Jak Bewit pomůže rozjet váš internetový obchod" plný tipů a triků.</p> -->
                         </div>
                     </div>
                 </div>
@@ -1914,8 +1914,8 @@
                 const wantEbook = formData.get('want-ebook');
                 
                 // Validace formuláře
-                if (!firstName || !lastName || !email || !phone || !wantEbook) {
-                    alert('Prosím vyplňte všechna povinná pole a zaškrtněte souhlas s ebookem.');
+                if (!firstName || !lastName || !email || !phone) {
+                    alert('Prosím vyplňte všechna povinná pole.');
                     return;
                 }
                 
