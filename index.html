@@ -269,6 +269,7 @@
             color: var(--color-primary);
             margin: 10px 0;
         }
+
         
         /* === BLOK 6: TESTIMONIÁLY === */
         @keyframes scroll {
@@ -302,13 +303,10 @@
             flex-grow: 1;
         }
         .testimonial-card .author-info {
-            display: flex;
-            align-items: center;
             margin-top: 25px;
             border-top: 1px solid var(--color-border);
             padding-top: 25px;
         }
-        .testimonial-card img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-right: 15px; }
         .author-info .author { font-weight: 600; }
         .author-info .earnings { font-size: 14px; color: var(--color-primary); }
 
@@ -700,6 +698,18 @@
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
+        .coffee-video-container {
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            position: relative;
+            z-index: 2;
+        }
+        .coffee-video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
         .coffee-invitation-section h2 {
             color: var(--color-white);
             text-align: center;
@@ -1021,7 +1031,6 @@
             max-width: 100%;
             height: auto;
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow-medium);
         }
 
         .affiliate-form-content {
@@ -1270,13 +1279,13 @@
         <section class="section not-mlm-section">
             <div class="container">
                 <div>
-                    <h2><br>Jsme vaše podnikatelská franšíza.</h2>
+                    <h2><br>Podnikejte pod silnou značkou.</h2>
                     <ul>
-                        <li><span class="icon">✔️</span><span><strong>Žádné povinné nákupy, žádné vynucené školení.</strong> Sami si určíte, jak budete podnikat.</span></li>
-                        <li><span class="icon">✔️</span><span><strong>Podobné franšíze:</strong> Získáte plnou infrastrukturu, know-how a marketingové zdroje, abyste mohli začít ihned prodávat pod vlastní značkou.</span></li>
-                        <li><span class="icon">✔️</span><span><strong>Podpora na míru:</strong> Pomůžeme vám, když budete chtít. Nikdy vás do ničeho nenutíme.</span></li>
-                        <li><span class="icon">✔️</span><span><strong>Férové schéma:</strong> Vyděláváte za svůj vlastní prodej, ne za nábor dalších lidí.</span></li>
-                        <li><span class="icon">✔️</span><span><strong>Vlastní business:</strong> Místo nudných školení dostanete konkrétní nástroje a zdroje, abyste mohli vybudovat svůj vlastní úspěšný podnik.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Nakupujete jen tehdy, kdy sami chcete. Učíte se, když vám to dává smysl.</strong> Sami si určíte, jak budete podnikat.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Jsme podobní franšíze: </strong> Dáme vám kompletní zázemí, know-how i marketingové materiály, abyste mohli okamžitě prodávat pod svou značkou.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Podpora na míru:</strong> Jsme vám kdykoli k dispozici – podporu máte vždy po ruce.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Jednoduchý systém odměn:</strong> vyděláváte přímo za své prodeje.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Vlastní business:</strong> Poskytneme vám ověřené nástroje a podporu, díky nimž si vybudujete vlastní úspěšný byznys.</span></li>
                     </ul>
                 </div>
                 <div class="svg-container">
@@ -1299,6 +1308,12 @@
         <!-- === BLOK: POZVÁNÍ NA KÁVU === -->
         <section class="section coffee-invitation-section">
             <div class="container" style="position: relative; z-index: 1;">
+                <div class="coffee-video-container">
+                    <video autoplay muted loop playsinline>
+                        <source src="http://bewit.love/images/funnel/funnel_short_v1.mp4" type="video/mp4">
+                        Váš prohlížeč nepodporuje video element.
+                    </video>
+                </div>
                 <h2>Zveme tě na kávu!</h2>
                 <p class="intro-text">
                     Rádi tě osobně přivítáme a provedeme tě zákulisím BEWIT – od výroby a výzkumu až po náš expediční sklad. Díky tomu získáš autentickou představu o tom, co propaguješ. A pokud chceš, můžeš si rovnou natočit i své první reels video, které dodá tvým followerům inspiraci přímo z místa dění.
@@ -1379,6 +1394,22 @@
                         </div>
                         
                         
+                        <!-- Zaškrtávací políčka se souhlasy -->
+                        <div id="coffee-consent-container" style="margin: 20px 0;">
+                            <div class="consent-checkbox-item" style="margin-bottom: 15px;">
+                                <input type="checkbox" id="coffee-privacy-consent" name="privacy-consent" required style="margin-right: 10px;">
+                                <label for="coffee-privacy-consent" style="font-size: 14px; color: white; line-height: 1.4;">
+                                    Souhlasím se <a href="https://bewit.love/zasady-zpracovani-osobnich-udaju/" target="_blank" style="color: var(--color-accent); text-decoration: underline;">zásadami zpracování osobních údajů</a> *
+                                </label>
+                            </div>
+                            <div class="consent-checkbox-item">
+                                <input type="checkbox" id="coffee-marketing-consent" name="marketing-consent" style="margin-right: 10px;">
+                                <label for="coffee-marketing-consent" style="font-size: 14px; color: white; line-height: 1.4;">
+                                    Souhlasím se zpracováním osobních údajů pro marketingové účely
+                                </label>
+                            </div>
+                        </div>
+
                         <button type="submit" class="coffee-submit-btn">Kontaktujte mě</button>
                     </form>
                 </div>
@@ -1397,7 +1428,6 @@
                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
                         <p class="quote">"Produkty Bewit doporučuji svým klientům, protože jim věřím. Provize je pro mě skvělý bonus, který mi snadno zaplatí nájem ordinace."</p>
                         <div class="author-info">
-                            <img src="https://via.placeholder.com/100x100.png?text=J" alt="Fotka partnerky Jany">
                             <div>
                                 <div class="author">Jana, Terapeutka</div>
                                 <div class="earnings">prům. 18 000 Kč / měsíc</div>
@@ -1408,7 +1438,6 @@
                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
                         <p class="quote">"Napsal jsem dva články o esenciálních olejích a od té doby mi chodí peníze každý měsíc. Je to nejjednodušší affiliate program, ve kterém jsem."</p>
                         <div class="author-info">
-                            <img src="https://via.placeholder.com/100x100.png?text=T" alt="Fotka partnera Tomáše">
                             <div>
                                 <div class="author">Tomáš, Blogger</div>
                                 <div class="earnings">prům. 25 000 Kč / měsíc</div>
@@ -1419,7 +1448,6 @@
                          <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
                         <p class="quote">"Jako maminka na mateřské jsem hledala přivýdělek, který by mě bavil. Doporučuji kamarádkám a ony zase dál. Je to skvělé."</p>
                         <div class="author-info">
-                            <img src="https://via.placeholder.com/100x100.png?text=K" alt="Fotka partnerky Kláry">
                             <div>
                                 <div class="author">Klára, Maminka na MD</div>
                                 <div class="earnings">prům. 9 500 Kč / měsíc</div>
@@ -1430,7 +1458,6 @@
                          <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
                         <p class="quote">"Nejdřív jsem byl skeptický, ale teď lituji, že jsem nezačal dřív. Systém je transparentní a podpora Bewit je opravdu lidská a ochotná."</p>
                         <div class="author-info">
-                            <img src="https://via.placeholder.com/100x100.png?text=P" alt="Fotka partnera Petra">
                             <div>
                                 <div class="author">Petr, IT specialista</div>
                                 <div class="earnings">prům. 32 000 Kč / měsíc</div>
@@ -1443,7 +1470,6 @@
                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
                         <p class="quote">"Produkty Bewit doporučuji svým klientům, protože jim věřím. Provize je pro mě skvělý bonus, který mi snadno zaplatí nájem ordinace."</p>
                         <div class="author-info">
-                            <img src="https://via.placeholder.com/100x100.png?text=J" alt="Fotka partnerky Jany">
                             <div>
                                 <div class="author">Jana, Terapeutka</div>
                                 <div class="earnings">prům. 18 000 Kč / měsíc</div>
@@ -1454,7 +1480,6 @@
                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
                         <p class="quote">"Produkty Bewit doporučuji svým klientům, protože jim věřím. Provize je pro mě skvělý bonus, který mi snadno zaplatí nájem ordinace."</p>
                         <div class="author-info">
-                            <img src="https://via.placeholder.com/100x100.png?text=T" alt="Fotka partnera Tomáše">
                             <div>
                                 <div class="author">Tomáš, Blogger</div>
                                 <div class="earnings">prům. 25 000 Kč / měsíc</div>
@@ -1465,7 +1490,6 @@
                          <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
                         <p class="quote">"Jako maminka na mateřské jsem hledala přivýdělek, který by mě bavil. Doporučuji kamarádkám a ony zase dál. Je to skvělé."</p>
                         <div class="author-info">
-                            <img src="https://via.placeholder.com/100x100.png?text=K" alt="Fotka partnerky Kláry">
                             <div>
                                 <div class="author">Klára, Maminka na MD</div>
                                 <div class="earnings">prům. 9 500 Kč / měsíc</div>
@@ -1476,7 +1500,6 @@
                          <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
                         <p class="quote">"Nejdřív jsem byl skeptický, ale teď lituji, že jsem nezačal dřív. Systém je transparentní a podpora Bewit je opravdu lidská a ochotná."</p>
                         <div class="author-info">
-                            <img src="https://via.placeholder.com/100x100.png?text=P" alt="Fotka partnera Petra">
                             <div>
                                 <div class="author">Petr, IT specialista</div>
                                 <div class="earnings">prům. 32 000 Kč / měsíc</div>
@@ -1535,12 +1558,14 @@
 
         <section class="section contact-form" id="formular">
             <div class="container">
-                <h2>Udělejte první krok ještě dnes. S naším ebookem dostaneš konkrétní návod.</h2>
-                <p class="intro-text">Zaškrtněte pole níže a my vám zdarma pošleme konkrétní návod krok za krokem, jak dosáhnout konzistentních výdělků. Jedná se o detailní manuál na rentu, který vám ukáže přesně, jak začít a jak si vybudovat pasivní příjem.</p>
+                <h2>Začni budovat svůj úspěšný byznys s BEWIT – registruj se ještě dnes a získej e-book zdarma, který ti ukáže konkrétní kroky.</h2>
+                <p class="intro-text">Objev, jak si vybudovat úspěšný byznys s BEWITem – krok za krokem
+                    Stáhni si zdarma e-book, ve kterém najdeš krok za krokem vysvětlený systém, jak pracovat s BEWITem, získávat stabilní příjem a vybudovat si vlastní rentu.</p>
                 
                 <div class="affiliate-form-layout">
                     <div class="affiliate-form-image">
-                        <img src="https://i.postimg.cc/0Nxp56S5/20250711-1237-Moderni-Kniha-Mockup-simple-compose-01jzwgwr4afyzvdb5qdd9xc4y4.png" alt="Moderní kniha - E-book">
+                        <!-- <img src="https://i.postimg.cc/0Nxp56S5/20250711-1237-Moderni-Kniha-Mockup-simple-compose-01jzwgwr4afyzvdb5qdd9xc4y4.png" alt="Moderní kniha - E-book"> -->
+                        <img src="https://modopafybeslbcqjxsve.supabase.co/storage/v1/object/public/web/2025-09-12_10-32-45-removebg-preview.png" alt="Moderní kniha - E-book">
                     </div>
                     
                     <div class="affiliate-form-content">
@@ -1571,6 +1596,22 @@
                                 <div id="ebook-checkbox-container">
                                     <input type="checkbox" id="want-ebook" name="want-ebook">
                                     <label for="want-ebook">Chci ebook manuál na rentu</label>
+                                </div>
+                                
+                                <!-- Zaškrtávací políčka se souhlasy -->
+                                <div id="affiliate-consent-container" style="margin: 20px 0;">
+                                    <div class="consent-checkbox-item" style="margin-bottom: 15px;">
+                                        <input type="checkbox" id="affiliate-privacy-consent" name="privacy-consent" required style="margin-right: 10px;">
+                                        <label for="affiliate-privacy-consent" style="font-size: 14px; color: white; line-height: 1.4;">
+                                            Souhlasím se <a href="https://bewit.love/zasady-zpracovani-osobnich-udaju/" target="_blank" style="color: var(--color-accent); text-decoration: underline;">zásadami zpracování osobních údajů</a> *
+                                        </label>
+                                    </div>
+                                    <div class="consent-checkbox-item">
+                                        <input type="checkbox" id="affiliate-marketing-consent" name="marketing-consent" style="margin-right: 10px;">
+                                        <label for="affiliate-marketing-consent" style="font-size: 14px; color: white; line-height: 1.4;">
+                                            Souhlasím se zpracováním osobních údajů pro marketingové účely
+                                        </label>
+                                    </div>
                                 </div>
                                 
                                 <button type="submit" class="coffee-submit-btn">Začít s affiliate programem</button>
@@ -1643,6 +1684,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             updateSalesReward();
         });
+
+        // === PROCENTA ZŮSTÁVAJÍ FIXNÍ NA 30% ===
+        // Žádná animace procent - zůstává na pevných 30%
 
       // === ANIMACE BĚHACÍHO TEXTU PO KŘIVCE ===
 (function() {
@@ -1912,10 +1956,12 @@
                 const email = formData.get('email');
                 const phone = formData.get('phone');
                 const wantEbook = formData.get('want-ebook');
+                const privacyConsent = formData.get('privacy-consent');
+                const marketingConsent = formData.get('marketing-consent');
                 
                 // Validace formuláře
-                if (!firstName || !lastName || !email || !phone) {
-                    alert('Prosím vyplňte všechna povinná pole.');
+                if (!firstName || !lastName || !email || !phone || !privacyConsent) {
+                    alert('Prosím vyplňte všechna povinná pole a souhlaste se zpracováním osobních údajů.');
                     return;
                 }
                 
@@ -1933,6 +1979,10 @@
                     email: email,
                     phone: phone,
                     wantEbook: !!wantEbook,
+                    
+                    // Souhlasy
+                    privacyConsent: !!privacyConsent,
+                    marketingConsent: !!marketingConsent,
                     
                     // Datum registrace
                     registrationDate: formatClickDate(),
@@ -2129,6 +2179,10 @@
             email: formData.get('email'),
             phone: formData.get('phone'),
             region: formData.get('region'),
+            
+            // Souhlasy
+            privacyConsent: formData.get('privacy-consent') === 'on',
+            marketingConsent: formData.get('marketing-consent') === 'on',
             
             // Tagy
             tags: WEBHOOK_CONFIG.tags,

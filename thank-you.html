@@ -653,7 +653,7 @@
     <script>
         // === PROGRESS BAR LOGIKA ===
         function updateProgressBar() {
-            const totalSections = 8; // Celkový počet sekcí formuláře
+            const totalSections = 6; // Celkový počet sekcí formuláře (bez posuvníků)
             let completedSections = 0;
             
             // 1. Profese (textové pole)
@@ -686,23 +686,13 @@
                 completedSections++;
             }
             
-            // 6. Roky v affiliate (posuvník)
-            const affiliateYears = document.getElementById('affiliate-years');
-            if (affiliateYears.value > 1) {
-                completedSections++;
-            }
-            
-            // 7. Očekávaný výsledek (posuvník)
-            const expectedResult = document.getElementById('expected-result');
-            if (expectedResult.value > 1) {
-                completedSections++;
-            }
-            
-            // 8. Osobní setkání (radio buttons)
+            // 6. Osobní setkání (radio buttons)
             const personalMeeting = document.querySelector('input[name="personal-meeting"]:checked');
             if (personalMeeting) {
                 completedSections++;
             }
+            
+            // POZNÁMKA: Posuvníky jsou vyloučeny z progress trackingu
             
             // Výpočet procent
             const percentage = Math.round((completedSections / totalSections) * 100);
@@ -718,7 +708,7 @@
             return percentage;
         }
 
-        // Funkce pro přidání event listenerů na všechny inputy
+        // Funkce pro přidání event listenerů na všechny inputy (kromě posuvníků)
         function addProgressTrackingListeners() {
             // Textové pole
             document.getElementById('profession').addEventListener('input', updateProgressBar);
@@ -733,10 +723,7 @@
                 checkbox.addEventListener('change', updateProgressBar);
             });
             
-            // Posuvníky
-            document.querySelectorAll('input[type="range"]').forEach(slider => {
-                slider.addEventListener('input', updateProgressBar);
-            });
+            // POZNÁMKA: Posuvníky jsou vyloučeny z progress trackingu
         }
 
         // === POSUVNÍK PRO ROKY V AFFILIATE === 
