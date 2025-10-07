@@ -2055,8 +2055,8 @@
     // KONFIGURACE WEBHOOKU A TAGŮ
     // ===========================================
     const WEBHOOK_CONFIG = {
-        // URL webhooku - vyplňte skutečnou URL
-        url: 'https://n8n.srv980546.hstgr.cloud/webhook-test/597fec26-b6b4-4f43-a931-672302d334ee', // ZMĚŇTE: Vložte zde URL vašeho webhooku
+        // URL webhooku pro coffee formulář
+        url: 'https://n8n.srv980546.hstgr.cloud/webhook-test/597fec26-b6b4-4f43-a931-672302d334ee', // Coffee webhook
         
         // Tagy pro kategorizaci - lze přidat více tagů
         tags: [
@@ -2276,212 +2276,60 @@
         // Příprava dat pro webhook
         const webhookData = prepareWebhookData(formData);
         
-        // Odeslání na webhook
+        // Ujistíme se, že máme customerID
+        if (!webhookData.customerId) {
+            webhookData.customerId = window.getBewitCustomerId ? window.getBewitCustomerId() : null;
+        }
+        
+        // Uložení dat do localStorage pro použití na thank-you stránce
+        localStorage.setItem('coffeeFormData', JSON.stringify(webhookData));
+        
+        // Změna textu tlačítka
+        submitBtn.textContent = 'Odesílám...';
+        submitBtn.style.background = '#28a745';
+        
+        // Nejprve odešleme webhook pro coffee formulář
         sendToWebhook(webhookData).then(result => {
             if (result.success) {
-                // Úspěšné odeslání
-                submitBtn.textContent = 'Odesláno ✓';
-                submitBtn.style.background = '#28a745';
+                console.log('✅ Coffee webhook úspěšně odeslán');
+                submitBtn.textContent = 'Přesměrovávám...';
                 
-                // Log pro debugging (pokud bylo simulováno)
-                if (result.simulated) {
-                    console.log('Formulář byl validován a připraven pro webhook:', webhookData);
-                }
+                // Po úspěšném odeslání webhooku přesměrujeme na thank-you stránku
+                setTimeout(() => {
+                    window.location.href = 'thank-you.html';
+                }, 500);
             } else {
-                // Chyba při odesílání
-                submitBtn.textContent = 'Chyba - zkuste znovu';
-                submitBtn.style.background = '#dc3545';
-                console.error('Chyba webhook:', result.error);
-                
-                // Zobrazení chybové zprávy uživateli
-                const errorMessage = document.createElement('div');
-                errorMessage.style.cssText = `
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    background: #dc3545;
-                    color: white;
-                    padding: 15px 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                    z-index: 10000;
-                    font-weight: 600;
-                `;
-                errorMessage.textContent = 'Nastala chyba při odesílání. Zkuste to prosím znovu.';
-                document.body.appendChild(errorMessage);
-                
+                console.error('❌ Chyba při odesílání coffee webhooku:', result.error);
+                // I při chybě webhooku přesměrujeme (webhook není kritický)
+                submitBtn.textContent = 'Přesměrovávám...';
                 setTimeout(() => {
-                    if (errorMessage.parentNode) {
-                        errorMessage.parentNode.removeChild(errorMessage);
-                    }
-                }, 5000);
-                
-                // Reset tlačítka po chybě
-                setTimeout(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.background = '';
-                }, 3000);
-                
-                return; // Ukončíme zde při chybě
+                    window.location.href = 'thank-you.html';
+                }, 500);
             }
-            
-            // Zobrazení úspěšné zprávy
-            const successMessage = document.createElement('div');
-            successMessage.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #28a745;
-                color: white;
-                padding: 15px 20px;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                z-index: 10000;
-                font-weight: 600;
-                animation: slideIn 0.3s ease-out;
-            `;
-            successMessage.textContent = 'Formulář byl úspěšně odeslán! Brzy vás kontaktujeme.';
-            
-            // Přidání CSS animace
-            if (!document.querySelector('#success-animation-style')) {
-                const style = document.createElement('style');
-                style.id = 'success-animation-style';
-                style.textContent = `
-                    @keyframes slideIn {
-                        from { transform: translateX(100%); opacity: 0; }
-                        to { transform: translateX(0); opacity: 1; }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-            
-            document.body.appendChild(successMessage);
-            
-            // Automatické odebrání zprávy po 5 sekundách
-            setTimeout(() => {
-                successMessage.style.animation = 'slideIn 0.3s ease-out reverse';
-                setTimeout(() => {
-                    if (successMessage.parentNode) {
-                        successMessage.parentNode.removeChild(successMessage);
-                    }
-                }, 300);
-            }, 5000);
-            
-            // Reset formuláře po 2 sekundách
-            setTimeout(() => {
-                form.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = '';
-                
-                // Reset custom selectu
-                const customSelectTrigger = form.querySelector('.custom-select-trigger');
-                if (customSelectTrigger) {
-                    customSelectTrigger.querySelector('span').textContent = 'Vyberte váš kraj';
-                    customSelectTrigger.classList.add('placeholder');
-                    customSelectTrigger.setAttribute('data-value', '');
-                }
-                
-                // Reset preference styling
-                const preferenceItems = form.querySelectorAll('.coffee-preference-item');
-                preferenceItems.forEach(item => {
-                    item.style.background = '';
-                    item.style.borderColor = '';
-                });
-                
-                // Odstraň všechny chybové hlášky
-                const errorMessages = form.querySelectorAll('.error-message');
-                errorMessages.forEach(msg => msg.remove());
-            }, 2000);
-            
         }).catch(error => {
-            // Obecná chyba (například síťová)
-            console.error('Neočekávaná chyba:', error);
-            submitBtn.textContent = 'Chyba - zkuste znovu';
-            submitBtn.style.background = '#dc3545';
-            
+            console.error('❌ Neočekávaná chyba při coffee webhooku:', error);
+            // I při chybě přesměrujeme
+            submitBtn.textContent = 'Přesměrovávám...';
             setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = '';
-            }, 3000);
-        });
-    });
-    
-    // Interaktivní chování checkboxů
-    const preferenceItems = document.querySelectorAll('.coffee-preference-item');
-    preferenceItems.forEach(item => {
-        const checkbox = item.querySelector('input[type="checkbox"]');
-        const label = item.querySelector('label');
-        
-        // Kliknutí kdekoli v oblasti položky
-        item.addEventListener('click', function(e) {
-            // Zabráníme dvojitému triggeru při kliknutí přímo na checkbox nebo label
-            if (e.target === checkbox || e.target === label) {
-                return;
-            }
-            
-            e.preventDefault();
-            checkbox.checked = !checkbox.checked;
-            
-            // Trigger change event pro validaci
-            const changeEvent = new Event('change', { bubbles: true });
-            checkbox.dispatchEvent(changeEvent);
-        });
-        
-        // Kliknutí na label také přepne checkbox
-        label.addEventListener('click', function(e) {
-            e.preventDefault();
-            checkbox.checked = !checkbox.checked;
-            
-            // Trigger change event pro validaci
-            const changeEvent = new Event('change', { bubbles: true });
-            checkbox.dispatchEvent(changeEvent);
-        });
-        
-        // Vizuální feedback při zaškrtnutí
-        checkbox.addEventListener('change', function() {
-            if (this.checked) {
-                item.style.background = 'rgba(217, 162, 138, 0.2)';
-                item.style.borderColor = 'var(--color-accent)';
-            } else {
-                item.style.background = '';
-                item.style.borderColor = '';
-            }
-            
+                window.location.href = 'thank-you.html';
+            }, 500);
         });
     });
 
-    // === CUSTOM SELECT FUNCTIONALITY ===
+    // === CUSTOM SELECT DROPDOWN ===
     const customSelect = document.querySelector('.custom-select');
-    const trigger = customSelect?.querySelector('.custom-select-trigger');
-    const options = customSelect?.querySelector('.custom-select-options');
-    const hiddenSelect = customSelect?.querySelector('select');
-    const optionElements = customSelect?.querySelectorAll('.custom-select-option');
-
-    if (customSelect && trigger && options && hiddenSelect) {
-        // Toggle dropdown
+    if (customSelect) {
+        const trigger = customSelect.querySelector('.custom-select-trigger');
+        const options = customSelect.querySelector('.custom-select-options');
+        const hiddenSelect = customSelect.querySelector('select');
+        const optionElements = customSelect.querySelectorAll('.custom-select-option');
+        
+        // Otevření/zavření dropdownu
         trigger.addEventListener('click', function() {
-            const isActive = trigger.classList.contains('active');
-            
-            // Zavři všechny ostatní selecty (pokud by jich bylo víc)
-            document.querySelectorAll('.custom-select-trigger.active').forEach(t => {
-                if (t !== trigger) {
-                    t.classList.remove('active');
-                    t.nextElementSibling.classList.remove('active');
-                }
-            });
-            
-            if (isActive) {
-                trigger.classList.remove('active');
-                options.classList.remove('active');
-            } else {
-                trigger.classList.add('active');
-                options.classList.add('active');
-            }
+            trigger.classList.toggle('active');
+            options.classList.toggle('active');
         });
-
+        
         // Výběr možnosti
         optionElements.forEach(option => {
             option.addEventListener('click', function() {
@@ -2493,31 +2341,33 @@
                     return;
                 }
                 
-                // Aktualizuj trigger
+                // Aktualizace zobrazení
                 trigger.querySelector('span').textContent = text;
                 trigger.setAttribute('data-value', value);
-                trigger.classList.remove('placeholder');
                 
-                // Aktualizuj skrytý select
+                // Aktualizace skrytého selectu
                 hiddenSelect.value = value;
+                
+                // Odstranění placeholder třídy
+                if (value) {
+                    trigger.classList.remove('placeholder');
+                } else {
+                    trigger.classList.add('placeholder');
+                }
+                
+                // Zavření dropdownu
+                trigger.classList.remove('active');
+                options.classList.remove('active');
                 
                 // Trigger change event pro validaci
                 const changeEvent = new Event('change', { bubbles: true });
                 hiddenSelect.dispatchEvent(changeEvent);
                 
-                // Označení vybrané možnosti
-                optionElements.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                
-                // Zavři dropdown
-                trigger.classList.remove('active');
-                options.classList.remove('active');
-                
-                // Vymazání chyby při výběru
+                // Odstranění chybové hlášky
                 clearError(hiddenSelect);
             });
         });
-
+        
         // Zavření při kliknutí mimo
         document.addEventListener('click', function(e) {
             if (!customSelect.contains(e.target)) {
@@ -2525,7 +2375,7 @@
                 options.classList.remove('active');
             }
         });
-
+        
         // Zavření při stisku Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
@@ -2596,48 +2446,6 @@
             });
         });
         observer.observe(trigger, { attributes: true });
-    }
-
-    // === EBOOK CHECKBOX INTERAKTIVITA ===
-    const ebookContainer = document.getElementById('ebook-checkbox-container');
-    const ebookCheckbox = document.getElementById('want-ebook');
-    
-    if (ebookContainer && ebookCheckbox) {
-        // Kliknutí na kontejner přepne checkbox
-        ebookContainer.addEventListener('click', function(e) {
-            if (e.target !== ebookCheckbox) {
-                e.preventDefault();
-                ebookCheckbox.checked = !ebookCheckbox.checked;
-                
-                // Trigger change event
-                const changeEvent = new Event('change', { bubbles: true });
-                ebookCheckbox.dispatchEvent(changeEvent);
-            }
-        });
-        
-        // Vizuální feedback při zaškrtnutí
-        ebookCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                ebookContainer.style.background = 'rgba(217, 162, 138, 0.2)';
-                ebookContainer.style.border = '2px solid var(--color-accent)';
-            } else {
-                ebookContainer.style.background = 'rgba(255,255,255,0.1)';
-                ebookContainer.style.border = 'none';
-            }
-        });
-        
-        // Hover efekt
-        ebookContainer.addEventListener('mouseenter', function() {
-            if (!ebookCheckbox.checked) {
-                ebookContainer.style.background = 'rgba(255,255,255,0.15)';
-            }
-        });
-        
-        ebookContainer.addEventListener('mouseleave', function() {
-            if (!ebookCheckbox.checked) {
-                ebookContainer.style.background = 'rgba(255,255,255,0.1)';
-            }
-        });
     }
 })();
     </script>

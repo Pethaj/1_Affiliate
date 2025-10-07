@@ -487,7 +487,7 @@
             <div class="survey-form">
                 <h2>Dotazník pro nové partnery</h2>
                 
-                <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook-test/a41e8f87-dc1d-4aab-beaa-6c81f320b437">
+                <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook-test/a91ddf2c-6dbf-4d44-a57c-e3fe52a721fc">
                     
                     <!-- Profese -->
                     <div class="form-group">
@@ -798,14 +798,39 @@
             // Převod FormData na obyčejný objekt pro lepší zpracování
             const data = {};
             
-            // Přidání ID zákazníka
-            data.customerId = getCustomerId();
-            
             // Přidání data odeslání formuláře
             data.clickDate = formatClickDate();
             
-            // Přidání tagů
-            data.tags = ['Affiliate', 'survey_completed'];
+            // Přidání tagů - rozlišíme zdroj podle toho, zda máme data z coffee formuláře
+            const coffeeFormData = localStorage.getItem('coffeeFormData');
+            if (coffeeFormData) {
+                data.tags = ['Affiliate', 'survey_completed', 'from_coffee_invitation'];
+                // Přidáme také data z coffee formuláře
+                try {
+                    const coffeeData = JSON.parse(coffeeFormData);
+                    
+                    // Použijeme customerID z coffee formuláře
+                    data.customerId = coffeeData.customerId || getCustomerId();
+                    
+                    data.coffeeFormData = {
+                        firstName: coffeeData.firstName,
+                        lastName: coffeeData.lastName,
+                        email: coffeeData.email,
+                        phone: coffeeData.phone,
+                        region: coffeeData.region,
+                        privacyConsent: coffeeData.privacyConsent,
+                        marketingConsent: coffeeData.marketingConsent
+                    };
+                } catch (error) {
+                    console.error('Chyba při načítání coffee dat:', error);
+                    // Fallback na standardní generování ID
+                    data.customerId = getCustomerId();
+                }
+            } else {
+                // Pokud nepřišel z coffee formuláře, vygenerujeme nové ID
+                data.customerId = getCustomerId();
+                data.tags = ['Affiliate', 'survey_completed'];
+            }
             
             // Zpracování standardních polí
             for (let [key, value] of formData.entries()) {
@@ -842,8 +867,13 @@
                 data['expected-result-text'] = resultRanges[resultIndex];
             }
             
+            // Debug log pro ověření dat
+            console.log('🚀 Odesílám dotazník na webhook:', data);
+            console.log('📋 CustomerID:', data.customerId);
+            console.log('📦 Coffee data:', data.coffeeFormData);
+            
             // Odeslání dat na webhook
-            fetch('https://n8n.srv980546.hstgr.cloud/webhook-test/a41e8f87-dc1d-4aab-beaa-6c81f320b437', {
+            fetch('https://n8n.srv980546.hstgr.cloud/webhook-test/a91ddf2c-6dbf-4d44-a57c-e3fe52a721fc', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -852,21 +882,139 @@
             })
             .then(response => {
                 if (response.ok) {
-                    alert('Děkujeme za vyplnění dotazníku! Brzy se vám ozveme s dalšími informacemi.');
-                    // Případně přesměrování
-                    // window.location.href = 'confirmation.html';
+                    // Zobrazení elegantní zprávy místo alert()
+                    showSuccessMessage('Děkujeme za vyplnění dotazníku! Brzy se vám ozveme s dalšími informacemi.');
+                    
+                    // Skrytí formuláře a zobrazení děkovné zprávy
+                    const surveyForm = document.querySelector('.survey-form');
+                    const thankYouSection = document.querySelector('.thank-you-section');
+                    
+                    if (surveyForm) {
+                        surveyForm.style.display = 'none';
+                    }
+                    
+                    if (thankYouSection) {
+                        thankYouSection.innerHTML = `
+                            <div class="checkmark">✓</div>
+                            <h1>Děkujeme za váš zájem!</h1>
+                            <p style="font-size: 20px; margin-bottom: 30px;">Dotazník byl úspěšně odeslán.</p>
+                            <p style="font-size: 18px; color: var(--color-white); opacity: 0.9;">Brzy se vám ozveme s dalšími informacemi o affiliate programu.</p>
+                        `;
+                    }
                 } else {
                     throw new Error('Chyba při odesílání');
                 }
             })
             .catch(error => {
                 console.error('Chyba:', error);
-                alert('Došlo k chybě při odesílání dotazníku. Zkuste to prosím znovu.');
+                showErrorMessage('Došlo k chybě při odesílání dotazníku. Zkuste to prosím znovu.');
             });
         });
 
+        // === FUNKCE PRO ZOBRAZENÍ ZPRÁV ===
+        function showSuccessMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #28a745;
+                color: white;
+                padding: 20px 25px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+                z-index: 10000;
+                font-weight: 600;
+                font-size: 16px;
+                max-width: 400px;
+                animation: slideInRight 0.5s ease-out;
+            `;
+            messageDiv.textContent = message;
+            
+            // Přidání CSS animace
+            if (!document.querySelector('#message-animation-style')) {
+                const style = document.createElement('style');
+                style.id = 'message-animation-style';
+                style.textContent = `
+                    @keyframes slideInRight {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOutRight {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(messageDiv);
+            
+            // Automatické odebrání zprávy po 5 sekundách
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOutRight 0.5s ease-out';
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.parentNode.removeChild(messageDiv);
+                    }
+                }, 500);
+            }, 5000);
+        }
+
+        function showErrorMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #dc3545;
+                color: white;
+                padding: 20px 25px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+                z-index: 10000;
+                font-weight: 600;
+                font-size: 16px;
+                max-width: 400px;
+                animation: slideInRight 0.5s ease-out;
+            `;
+            messageDiv.textContent = message;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Automatické odebrání zprávy po 7 sekundách (delší pro chybové zprávy)
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOutRight 0.5s ease-out';
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.parentNode.removeChild(messageDiv);
+                    }
+                }, 500);
+            }, 7000);
+        }
+
         // === ANIMACE PO NAČTENÍ STRÁNKY ===
         document.addEventListener('DOMContentLoaded', function() {
+            // Načtení dat z localStorage (pokud přišel uživatel z coffee formuláře)
+            const coffeeFormData = localStorage.getItem('coffeeFormData');
+            if (coffeeFormData) {
+                try {
+                    const data = JSON.parse(coffeeFormData);
+                    console.log('Načtena data z coffee formuláře:', data);
+                    
+                    // Aktualizace děkovné zprávy
+                    const thankYouSection = document.querySelector('.thank-you-section h1');
+                    if (thankYouSection && data.firstName) {
+                        thankYouSection.textContent = `Děkujeme za váš zájem, ${data.firstName}!`;
+                    }
+                    
+                    // Vyčištění localStorage po použití
+                    localStorage.removeItem('coffeeFormData');
+                } catch (error) {
+                    console.error('Chyba při načítání dat z localStorage:', error);
+                }
+            }
+            
             // Inicializace progress tracking
             addProgressTrackingListeners();
             updateProgressBar(); // Počáteční stav
