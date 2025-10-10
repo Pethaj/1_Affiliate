@@ -344,9 +344,9 @@
             opacity: 0.7;
         }
         .comparison-item-highlight {
-            background: #fff7f3;
-            border: 2px solid var(--color-accent);
-            box-shadow: 0 4px 24px rgba(217,162,138,0.10);
+            background: #f7faf7;
+            border: 2px solid var(--color-primary);
+            box-shadow: 0 4px 24px rgba(107,122,106,0.10);
             border-radius: var(--border-radius);
             padding: 40px 30px;
             position: relative;
@@ -354,8 +354,8 @@
         }
         .comparison-item-highlight .value,
         .value-highlight {
-            color: var(--color-accent);
-            text-shadow: 0 2px 10px rgba(217,162,138,0.15);
+            color: var(--color-primary);
+            text-shadow: 0 2px 10px rgba(107,122,106,0.15);
         }
         .comparison-item p { max-width: 250px; margin: 0 auto; }
         .divider-vertical {
@@ -922,61 +922,6 @@
             font-weight: 500;
         }
 
-        /* Styly pro ebook checkbox */
-        #ebook-checkbox-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 8px;
-            cursor: pointer;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        #ebook-checkbox-container:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        #want-ebook {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            border-radius: 4px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            background: transparent;
-            position: relative;
-            margin: 0;
-            flex-shrink: 0;
-        }
-        
-        #want-ebook:checked {
-            background: var(--color-accent);
-            border-color: var(--color-accent);
-        }
-        
-        #want-ebook:checked::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        
-        #ebook-checkbox-container label {
-            cursor: pointer;
-            margin: 0;
-            font-size: 16px;
-            color: white;
-            line-height: 1.4;
-            flex: 1;
-        }
         .coffee-submit-btn {
             width: 100%;
             padding: 18px;
@@ -1075,44 +1020,48 @@
         <div class="container hero-content">
             <div class="hero-text">
                 <p class="sub-heading">STAŇTE SE PARTNEREM BEWIT</p>
-                <h1>Vydělávejte na své vášni pro zdravý životní styl</h1>
-                <p>Sdílejte oblíbené české produkty a vydělávejte až 30 % z každého prodeje. Registrace je zdarma a spolupracujte <strong style="color: var(--color-primary); font-weight: 700;">zcela flexibilně</strong>.</p>
+                <h1>Proměňte svou vášeň ve zdroj příjmu</h1>
+                <p>Získejte až 30 % provizi za každého zákazníka, kterého přivedete.
+                    Průměrná odměna je  <strong style="color: var(--color-primary); font-weight: 700;"> 850 Kč za jeden nákup. </strong>.</p>
                 <a href="#formular" class="btn btn-primary">Začít vydělávat</a>
             </div>
             <div class="hero-image">
-                <img src="https://i.postimg.cc/6pKf1GTL/20250711-0959-Pla-z-ova-jo-ga-remix-01jzw7tkz0e8bth88c8hjm29tv-1.png" alt="Žena cvičí jógu na pláži">
+                <img src="https://modopafybeslbcqjxsve.supabase.co/storage/v1/object/public/web/fot-final.png" alt="Žena cvičí jógu na pláži">
             </div>
         </div>
     </header>
 
     <main>
         <section class="section about-us">
-            <div class="container">
+           
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
+                    <h3>Vydělávejte víc - jsme výrobci</h3>
+                    <p>Díky vlastní výrobě vyplácíme vyšší provize než běžné e-shopy.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12c0-2.25 1.5-4.5 3.75-4.5s3.75 2.25 3.75 4.5-1.5 4.5-3.75 4.5S6.75 14.25 6.75 12zm7.5 0c0-2.25 1.5-4.5 3.75-4.5s3.75 2.25 3.75 4.5-1.5 4.5-3.75 4.5-3.75-2.25-3.75-4.5z" /></svg></div>
+                    <h3>Doživotní provize</h3>
+                    <p>Žádné 60denní cookie – provize získáte z každého budoucího nákupu vašeho zákazníka.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" /></svg></div>
+                    <h3>Více zákazníků, více odměn</h3>
+                    <p>Vyděláte i z nákupů těch, kteří přijdou díky doporučení vašich zákazníků.</p>
+                </div>
+                <!-- <div class="benefit-item">
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-1.04 1.134-1.253l.974-.363a1.125 1.125 0 011.393.842l.068.271a1.125 1.125 0 001.32.946l.283-.095a1.125 1.125 0 011.233 1.233l-.095.283a1.125 1.125 0 00.946 1.32l.271.068a1.125 1.125 0 01.842 1.393l-.363.974a1.125 1.125 0 01-1.253 1.134l-.284.095a1.125 1.125 0 00-.946 1.32l.095.283a1.125 1.125 0 01-1.233 1.233l-.283-.095a1.125 1.125 0 00-1.32.946l-.068.271a1.125 1.125 0 01-1.393.842l-.974-.363a1.125 1.125 0 01-1.253-1.134l-.095-.284a1.125 1.125 0 00-1.32-.946l-.283.095a1.125 1.125 0 01-1.233-1.233l.095-.283a1.125 1.125 0 00-.946-1.32l-.271-.068a1.125 1.125 0 01-.842-1.393l.363-.974a1.125 1.125 0 011.253-1.134l.284-.095a1.125 1.125 0 00.946-1.32l-.095-.283a1.125 1.125 0 011.233-1.233l.283.095a1.125 1.125 0 001.32-.946l.068-.271zM12 15a3 3 0 100-6 3 3 0 000 6z" /></svg></div>
+                    <h3>Vystupte z davu </h3>
+                    <p>Prodávejte produkty, které mají smysl, hodnotu a opravdu pomáhají. </p>
+                </div> -->
+            </div>
+           
+            <div class="container" style="margin-top: 80px;">
                 <h2>Jsme BEWIT. Blízko přírodě, blízko k vám.</h2>
                 <p class="intro-text">Naše kořeny jsou v Ostravě, naše srdce v Beskydech. Vyrábíme produkty, které propojují člověka s přírodou a přinášejí skutečnou hodnotu. Díky poctivosti a respektu jsme si vybudovali pozici lídra na českém trhu. Teď zveme vás – pojďte s námi růst a objevte výhody <span class="affiliate-inline">našeho jedinečného partnerského programu.</span></p> 
                 
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01" /></svg></div>
-                        <h3>Žádné počáteční náklady</h3>
-                        <p>Registrace i partnerství je a vždy bude zdarma.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0l-3.75-3.75M17.25 21L21 17.25" /></svg></div>
-                        <h3>Žádné minimální obraty</h3>
-                        <p>Je jen na vás, jak moc aktivní budete.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg></div>
-                        <h3>Vystupte z davu</h3>
-                        <p>Prodávejte produkty, které mají smysl, hodnotu a opravdu pomáhají.</p>
-                    </div>
-                    <!-- <div class="benefit-item">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-1.04 1.134-1.253l.974-.363a1.125 1.125 0 011.393.842l.068.271a1.125 1.125 0 001.32.946l.283-.095a1.125 1.125 0 011.233 1.233l-.095.283a1.125 1.125 0 00.946 1.32l.271.068a1.125 1.125 0 01.842 1.393l-.363.974a1.125 1.125 0 01-1.253 1.134l-.284.095a1.125 1.125 0 00-.946 1.32l.095.283a1.125 1.125 0 01-1.233 1.233l-.283-.095a1.125 1.125 0 00-1.32.946l-.068.271a1.125 1.125 0 01-1.393.842l-.974-.363a1.125 1.125 0 01-1.253-1.134l-.095-.284a1.125 1.125 0 00-1.32-.946l-.283.095a1.125 1.125 0 01-1.233-1.233l.095-.283a1.125 1.125 0 00-.946-1.32l-.271-.068a1.125 1.125 0 01-.842-1.393l.363-.974a1.125 1.125 0 011.253-1.134l.284-.095a1.125 1.125 0 00.946-1.32l-.095-.283a1.125 1.125 0 011.233-1.233l.283.095a1.125 1.125 0 001.32-.946l.068-.271zM12 15a3 3 0 100-6 3 3 0 000 6z" /></svg></div>
-                        <h3>Vystupte z davu </h3>
-                        <p>Prodávejte produkty, které mají smysl, hodnotu a opravdu pomáhají. </p>
-                    </div> -->
-                </div>
+                
                 
                 <!-- CTA Tlačítko -->
                 <div style="text-align: center; margin-top: 40px;">
@@ -1144,35 +1093,37 @@
 
         <section class="section rewards">
             <div class="container">
-                <h2>Váš klíč k odměnám je jednoduchý</h2>
+                <h2>Světově unikátní model ověřený více než desetiletou praxí</h2>
                 <div class="reward-highlight">
-                    <p>Z každého prodeje přes váš unikátní odkaz získáváte až</p>
-                    <div class="percentage">30%</div>
-                    <p>provizi.</p>
+                    <p>Z každého prodeje přes váš unikátní odkaz <strong>získáváte až 30%</strong>. Průměrná hodnota objednávky našich zákazníků je 2 500 Kč.</p>
+                    <div class="percentage"></div>
+                    
                 </div>
 
                 <div class="how-it-works-grid">
                     <div class="how-item">
                         <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg></div>
-                        <h3>Budujte si finanční nezávislost</h3>
-                        <p>Budujte si dlouhodobý příjem s naším exkluzivním provizním systémem.</p>
+                        <h3>Budujte svůj příjem bez starostí</h3>
+                        <p>Objednávky, platby i zákaznický support řešíme kompletně za vás. Vy jen sdílíte svůj unikátní odkaz.</p>
                     </div>
                     <div class="how-item">
                         <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg></div>
-                        <h3>Nabídněte napřímo</h3>
-                        <p>Pracujete s lidmi, nebo jen chcete poradit přátelům? Sdílejte s nimi svůj unikátní odkaz.</p>
+                        <h3>Plná podpora pro váš růst
+                        </h3>
+                        <p>Silný marketingový tým, vzdělávací materiály a nástroje zdarma. Pomůžeme vám tvořit obsah, který vydělává.</p>
                     </div>
                     <div class="how-item">
-                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" /></svg></div>
-                        <h3>Získejte z dalších nákupů</h3>
-                        <p>Vaši spokojení zákazníci doporučují dál – a vám tím roste příjem.</p>
+                        <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg></div>
+                        <h3>Důvěryhodná česká značka
+                        </h3>
+                        <p>Navštivte naši firmu, seznamte se s majitelem, projděte si výrobu. Každý měsíc automatická výplata bez zbytečné administrativy.</p>
                     </div>
                 </div>
                 <p class="note">Je úplně jedno, jaký prodejní kanál zákazník zvolí. Provize je vždy vaše.</p>
             </div>
         </section>
 
-        <section id="calculator-section">
+        <!-- <section id="calculator-section">
             <div class="wave-top">
                 <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C400,40 1040,100 1440,60 L1440,0 L0,0 Z" fill="var(--color-white)"></path></svg>
             </div>
@@ -1195,7 +1146,7 @@
             <div class="wave-bottom">
                 <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C300,120 1140,0 1440,60 L1440,120 L0,120 Z" fill="var(--color-white)"></path></svg>
             </div>
-        </section>
+        </section> -->
 
         <!-- === CTA TLAČÍTKO === -->
         <section class="section" style="padding: 60px 0; background-color: var(--color-white);">
@@ -1264,12 +1215,17 @@
                     </svg>
                 </div>
                 <div class="bar-chart-legend" style="display:flex;justify-content:center;gap:30px;margin-top:18px;">
-                    <span class="legend-brown"><span class="legend-color" style="background:#A67C52;"></span> Přímý prodej</span>
-                    <span class="legend-green"><span class="legend-color" style="background:#6B7A6A;"></span> Prodej přes zákazníky z 2. linie</span>
+                    <span class="legend-brown"><span class="legend-color" style="background:#A67C52;"></span> Vaši zákazníci</span>
+                    <span class="legend-green"><span class="legend-color" style="background:#6B7A6A;"></span> Přátelé přivedeni vašimi zákazníky</span>
                 </div>
                 <div class="bar-chart-note" style="max-width:700px;margin:32px auto 0 auto;text-align:center;font-size:1.18em;color:#4E4E4E;background:#f8f8f8;padding:22px 28px;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
-                    <strong>Naše produkty mají výjimečnou schopnost šířit se samy díky silné retenci a nadšení zákazníků.</strong><br>
-                    Vaši klienti si mezi sebou spontánně předávají zkušenosti a doporučení. Pokud někdo z jejich okolí nakoupí na základě tohoto doporučení, získáváte provizi i z těchto nákupů – a to zcela automaticky. Většina našich partnerů si tak vybudovala širokou síť pasivních příjmů bez jakéhokoliv nátlaku nebo nutnosti motivovat zákazníky k šíření značky. <strong>Stačí, když si lidé naše produkty zamilují – o zbytek se postará komunita sama.</strong>
+                    <strong>Naše produkty mají výjimečnou schopnost šířit se samy díky své kvalitě 
+    a nadšení zákazníků.</strong><br>
+    Naše produkty si získávají oblibu samy svou kvalitou a zkušenostmi zákazníků.
+
+    Často se stává, že lidé sdílí své pozitivní dojmy se svými blízkými. Pokud někdo z jejich okolí na základě tohoto doporučení nakoupí, náš affiliate program vám z toho přizná odměnu – automaticky a transparentně.
+    Silným zázemím je také naše Facebook komunita s více než 18 000 členy, kde lidé sdílí tipy, zkušenosti i inspiraci. Díky tomu si mnoho našich partnerů postupně vybudovalo stabilní příjem, aniž by museli zákazníky přemlouvat. <strong> Stačí, když si lidé produkty oblíbí – a komunita se o přirozené šíření postará sama.</strong>
+     
                 </div>
             </div>
         </section>
@@ -1281,11 +1237,12 @@
                 <div>
                     <h2><br>Podnikejte pod silnou značkou.</h2>
                     <ul>
-                        <li><span class="icon">✔️</span><span><strong>Nakupujete jen tehdy, kdy sami chcete. Učíte se, když vám to dává smysl.</strong> Sami si určíte, jak budete podnikat.</span></li>
-                        <li><span class="icon">✔️</span><span><strong>Jsme podobní franšíze: </strong> Dáme vám kompletní zázemí, know-how i marketingové materiály, abyste mohli okamžitě prodávat pod svou značkou.</span></li>
-                        <li><span class="icon">✔️</span><span><strong>Podpora na míru:</strong> Jsme vám kdykoli k dispozici – podporu máte vždy po ruce.</span></li>
-                        <li><span class="icon">✔️</span><span><strong>Jednoduchý systém odměn:</strong> vyděláváte přímo za své prodeje.</span></li>
-                        <li><span class="icon">✔️</span><span><strong>Vlastní business:</strong> Poskytneme vám ověřené nástroje a podporu, díky nimž si vybudujete vlastní úspěšný byznys.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Plná svoboda:</strong> Nakupujete a sdílíte jen to, co sami chcete. Spolupráce je flexibilní a vy si určujete, jak a kdy budete tvořit obsah.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Zázemí jako franšíza: </strong> Poskytneme vám kompletní know-how, marketingové materiály i inspiraci k obsahu, abyste mohli okamžitě začít vydělávat pod svou značkou.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Podpora vždy po ruce:</strong> Vyděláváte přímo z nákupů, které přijdou díky vašim doporučením a obsahu.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Férový systém odměn:</strong> vyděláváte přímo za své prodeje.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Růst vašeho brandu:</strong> Poskytneme vám ověřené nástroje a podporu, abyste mohli rozšiřovat svůj dosah, posilovat vlastní značku a propojovat se s komunitou.</span></li>
+                        <li><span class="icon">✔️</span><span><strong>Silná značka a férový přístup:</strong> Budujete důvěryhodnou spolupráci s českou značkou s desetiletou tradicí.</span></li>
                     </ul>
                 </div>
                 <div class="svg-container">
@@ -1326,6 +1283,9 @@
                 </p>
                 
                 <div class="coffee-form-container">
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; text-align: center; border: 2px solid rgba(255,255,255,0.2);">
+                        <p style="margin: 0; font-size: 18px; font-weight: 600; color: var(--color-white);">Krok 1/2 – Základní údaje</p>
+                    </div>
                     <form id="coffee-invitation-form" action="#" method="POST">
                         <div class="coffee-form-row">
                             <div class="coffee-form-group">
@@ -1346,50 +1306,6 @@
                             <div class="coffee-form-group">
                                 <label for="phone">Telefon *</label>
                                 <input type="tel" id="phone" name="phone" placeholder="+420 123 456 789" required>
-                            </div>
-                        </div>
-                        
-                        <div class="coffee-form-group full-width">
-                            <label for="region">Kraj *</label>
-                            <div class="custom-select">
-                                <div class="custom-select-trigger placeholder" data-value="">
-                                    <span>Vyberte váš kraj</span>
-                                    <div class="custom-select-arrow"></div>
-                                </div>
-                                <div class="custom-select-options">
-                                    <div class="custom-select-option placeholder" data-value="">Vyberte váš kraj</div>
-                                    <div class="custom-select-option" data-value="Praha">Hlavní město Praha</div>
-                                    <div class="custom-select-option" data-value="Stredocesky">Středočeský kraj</div>
-                                    <div class="custom-select-option" data-value="Jihocesky">Jihočeský kraj</div>
-                                    <div class="custom-select-option" data-value="Plzensky">Plzeňský kraj</div>
-                                    <div class="custom-select-option" data-value="Karlovarsky">Karlovarský kraj</div>
-                                    <div class="custom-select-option" data-value="Ustecky">Ústecký kraj</div>
-                                    <div class="custom-select-option" data-value="Liberecky">Liberecký kraj</div>
-                                    <div class="custom-select-option" data-value="Kralovehradecky">Královéhradecký kraj</div>
-                                    <div class="custom-select-option" data-value="Pardubicky">Pardubický kraj</div>
-                                    <div class="custom-select-option" data-value="Vysocina">Kraj Vysočina</div>
-                                    <div class="custom-select-option" data-value="Jihomoravsky">Jihomoravský kraj</div>
-                                    <div class="custom-select-option" data-value="Olomoucky">Olomoucký kraj</div>
-                                    <div class="custom-select-option" data-value="Zlinsky">Zlínský kraj</div>
-                                    <div class="custom-select-option" data-value="Moravskoslezsky">Moravskoslezský kraj</div>
-                                </div>
-                                <select id="region" name="region" required style="display: none;">
-                                    <option value="">Vyberte váš kraj</option>
-                                    <option value="Praha">Hlavní město Praha</option>
-                                    <option value="Stredocesky">Středočeský kraj</option>
-                                    <option value="Jihocesky">Jihočeský kraj</option>
-                                    <option value="Plzensky">Plzeňský kraj</option>
-                                    <option value="Karlovarsky">Karlovarský kraj</option>
-                                    <option value="Ustecky">Ústecký kraj</option>
-                                    <option value="Liberecky">Liberecký kraj</option>
-                                    <option value="Kralovehradecky">Královéhradecký kraj</option>
-                                    <option value="Pardubicky">Pardubický kraj</option>
-                                    <option value="Vysocina">Kraj Vysočina</option>
-                                    <option value="Jihomoravsky">Jihomoravský kraj</option>
-                                    <option value="Olomoucky">Olomoucký kraj</option>
-                                    <option value="Zlinsky">Zlínský kraj</option>
-                                    <option value="Moravskoslezsky">Moravskoslezský kraj</option>
-                                </select>
                             </div>
                         </div>
                         
@@ -1517,17 +1433,18 @@
             <div class="container">
                 <h2>Jiný. Lepší. BEWIT.</h2>
                 <div class="comparison-flex">
+                    <div class="comparison-item comparison-item-highlight">
+                        <div class="value value-highlight">30%</div>
+                        <p>Našich partnerů si vydělává přes <strong style="color:var(--color-primary); font-weight:700;">50 000,-</strong> měsíčně</p>
+                    </div>
+                    <div class="divider-vertical"></div>
                     <div class="comparison-item comparison-item-grey">
                         <div class="value value-grey">13%</div>
                         <p>Dosáhne v klasickém klasickém síťovém marketingu výdělek vyšší než 30 000,-</p>
                     </div>
-                    <div class="divider-vertical"></div>
-                    <div class="comparison-item comparison-item-highlight">
-                        <div class="value value-highlight">30%</div>
-                        <p>Našich partnerů si vydělává přes <strong style="color:var(--color-accent); font-weight:700;">50 000,-</strong> měsíčně</p>
-                    </div>
                 </div>
-                <p class="outro">Naši partneři od nás neodcházejí. Vědí proč.</p>
+                <p class="outro">BEWIT pomáhá tvůrcům růst – nejen v číslech, ale i v hodnotě obsahu.
+                </p>
             </div>
         </section>
 
@@ -1535,7 +1452,8 @@
             <div class="container">
                 <h2>Podnikejte bez hranic</h2>
                 <p>Podnikejte odkudkoli – náš systém vám otevře cestu k zákazníkům po celém světě.</p>
-                <img src="https://modopafybeslbcqjxsve.supabase.co/storage/v1/object/public/web/Chat-GPT-Image-Jul-11-2025-11-26-40-AM-removebg-preview.png" alt="Mapa světa s vyznačenými zeměmi, kde Bewit působí">
+                <img src="https://modopafybeslbcqjxsve.supabase.co/storage/v1/object/public/web/minimal-world-map-isolated-white-background-with-shadow.png" alt="Mapa světa s vyznačenými zeměmi, kde Bewit působí">
+                <!-- <img src="https://modopafybeslbcqjxsve.supabase.co/storage/v1/object/public/web/Chat-GPT-Image-Jul-11-2025-11-26-40-AM-removebg-preview.png" alt="Mapa světa s vyznačenými zeměmi, kde Bewit působí"> -->
             </div>
         </section>
 
@@ -1543,12 +1461,13 @@
             <div class="container">
                 <h2>Shrnutí výhod:</h2>
                 <ul>
-                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Provize až 30 % z prodeje</li>
-                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Provize z každého prodeje</li>
-                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Odměny i z nákupů dalších doporučených zákazníků</li>
-                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Nulové vstupní i průběžné poplatky</li>
-                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Unikátní produkty české výroby</li>
-                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Přátelská podpora a férový přístup</li>
+                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Provize až 30 % z každého prodeje – atraktivní odměna za doporučení</li>
+                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Opakované provize – získáváte provize i z budoucích nákupů doporučených zákazníků</li>
+                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Odměny i z nákupů doporučených zákazníků – profitujete, když vaši zákazníci doporučí dál</li>
+                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Žádné vstupní ani průběžné poplatky – čistý zisk bez rizika</li>
+                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Unikátní přírodní produkty české výroby – snadno sdílitelný a autentický obsah</li>
+                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Férový a transparentní přístup – spolupráce založená na důvěře</li>
+                    <li><div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div> Přátelská podpora a materiály pro propagaci – usnadní vaši práci a šetří čas</li>
                 </ul>
                 <div class="cta-wrapper">
                     <a href="#formular" class="btn btn-primary">Ano, chci začít vydělávat</a>
@@ -1570,6 +1489,9 @@
                     
                     <div class="affiliate-form-content">
                         <div class="coffee-form-container">
+                            <div style="background: rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; text-align: center; border: 2px solid rgba(255,255,255,0.2);">
+                                <p style="margin: 0; font-size: 18px; font-weight: 600; color: var(--color-white);">Krok 1/2 – Základní údaje</p>
+                            </div>
                             <form action="#" method="POST" id="affiliate-form">
                                 <div class="coffee-form-row">
                                     <div class="coffee-form-group">
@@ -1591,11 +1513,6 @@
                                         <label for="phone">Telefon *</label>
                                         <input type="tel" id="phone" name="phone" placeholder="+420 123 456 789" required>
                                     </div>
-                                </div>
-                                
-                                <div id="ebook-checkbox-container">
-                                    <input type="checkbox" id="want-ebook" name="want-ebook">
-                                    <label for="want-ebook">Chci ebook manuál na rentu</label>
                                 </div>
                                 
                                 <!-- Zaškrtávací políčka se souhlasy -->
@@ -1658,32 +1575,36 @@
     </main>
     
     <script>
+        // Kalkulačka - pouze pokud existují elementy
         const salesSlider = document.getElementById('sales-slider');
         const salesCount = document.getElementById('sales-count');
         const rewardAmount = document.getElementById('reward-amount');
-        const rewardPerSale = 240;
-
-        const currencyFormatter = new Intl.NumberFormat('cs-CZ', {
-            style: 'currency',
-            currency: 'CZK',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        });
         
-        const numberFormatter = new Intl.NumberFormat('cs-CZ');
+        if (salesSlider && salesCount && rewardAmount) {
+            const rewardPerSale = 240;
 
-        function updateSalesReward() {
-            const sales = parseInt(salesSlider.value);
-            const reward = sales * rewardPerSale;
-            salesCount.innerText = numberFormatter.format(sales);
-            rewardAmount.innerText = currencyFormatter.format(reward);
+            const currencyFormatter = new Intl.NumberFormat('cs-CZ', {
+                style: 'currency',
+                currency: 'CZK',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            });
+            
+            const numberFormatter = new Intl.NumberFormat('cs-CZ');
+
+            function updateSalesReward() {
+                const sales = parseInt(salesSlider.value);
+                const reward = sales * rewardPerSale;
+                salesCount.innerText = numberFormatter.format(sales);
+                rewardAmount.innerText = currencyFormatter.format(reward);
+            }
+
+            salesSlider.addEventListener('input', updateSalesReward);
+
+            document.addEventListener('DOMContentLoaded', () => {
+                updateSalesReward();
+            });
         }
-
-        salesSlider.addEventListener('input', updateSalesReward);
-
-        document.addEventListener('DOMContentLoaded', () => {
-            updateSalesReward();
-        });
 
         // === PROCENTA ZŮSTÁVAJÍ FIXNÍ NA 30% ===
         // Žádná animace procent - zůstává na pevných 30%
@@ -2178,7 +2099,6 @@
             lastName: formData.get('lastName'),
             email: formData.get('email'),
             phone: formData.get('phone'),
-            region: formData.get('region'),
             
             // Souhlasy
             privacyConsent: formData.get('privacy-consent') === 'on',
