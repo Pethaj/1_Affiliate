@@ -7,24 +7,25 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* === DESIGN SYSTÉM === */
         :root {
-            --color-primary: #6B7A6A;      /* Šalvějově zelená */
-            --color-accent: #D9A28A;       /* Terakotová/Růžová */
-            --color-background: #FBF9F6;   /* Velmi světlá béžová */
-            --color-text: #4E4E4E;         /* Tmavě šedá/hnědá */
+            --color-primary: #5BA4CF;      /* Světle modrá */
+            --color-accent: #97C93D;       /* Světle zelená */
+            --color-background: #FFFFFF;   /* Bílá */
+            --color-text: #333333;         /* Tmavě šedá */
             --color-white: #FFFFFF;
-            --color-border: #EAE3DC;
+            --color-border: #E0E0E0;
+            --color-light-bg: #F5F5F5;     /* Světle šedá pro pozadí */
 
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Poppins', sans-serif;
+            --font-heading: 'Open Sans', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
 
-            --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.05);
-            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
-            --border-radius: 12px;
+            --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
         }
 
         /* === ZÁKLADNÍ RESET A STYLY === */
@@ -42,9 +43,9 @@
             font-family: var(--font-body);
             background-color: var(--color-background);
             color: var(--color-text);
-            line-height: 1.7;
-            font-size: 17px;
-            font-weight: 300;
+            line-height: 1.6;
+            font-size: 16px;
+            font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -65,13 +66,13 @@
             font-family: var(--font-heading);
             color: var(--color-primary);
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.3;
         }
         
-        h1 { font-size: 52px; }
-        h2 { font-size: 42px; text-align: center; margin-bottom: 60px; }
-        h3 { font-size: 22px; font-family: var(--font-body); font-weight: 600; color: var(--color-text); }
-        p { margin-bottom: 1rem; }
+        h1 { font-size: 48px; }
+        h2 { font-size: 36px; text-align: center; margin-bottom: 50px; }
+        h3 { font-size: 20px; font-family: var(--font-body); font-weight: 600; color: var(--color-text); }
+        p { margin-bottom: 1rem; line-height: 1.8; }
 
         .affiliate-inline {
             color: var(--color-primary);
@@ -80,23 +81,26 @@
 
         /* === TLAČÍTKA === */
         .btn {
-            padding: 16px 32px;
+            padding: 14px 32px;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 6px;
             display: inline-block;
             font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            font-size: 16px;
         }
         .btn-primary {
             background-color: var(--color-accent);
             color: var(--color-white);
-            box-shadow: 0 4px 10px rgba(217, 162, 138, 0.4);
+            box-shadow: 0 2px 6px rgba(151, 201, 61, 0.3);
         }
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(217, 162, 138, 0.5);
+            background-color: #8BC234;
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(151, 201, 61, 0.4);
         }
 
         /* === BLOK 1: HERO SEKCE === */
@@ -142,48 +146,53 @@
         }
 
         /* === BLOK 2: O NÁS A VÝHODY === */
+        .about-us {
+            background-color: var(--color-light-bg);
+        }
         .about-us .intro-text {
             max-width: 750px;
             margin: -40px auto 70px auto;
             text-align: center;
-            font-size: 18px;
+            font-size: 17px;
         }
         .benefits-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
+            gap: 25px;
         }
         .benefit-item {
             text-align: center;
-            padding: 30px;
+            padding: 35px 25px;
             background-color: var(--color-white);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-subtle);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s ease;
+            border: 1px solid var(--color-border);
         }
         .benefit-item:hover {
-             transform: translateY(-5px);
+             transform: translateY(-3px);
              box-shadow: var(--shadow-medium);
+             border-color: var(--color-accent);
         }
-        .benefit-item .icon { color: var(--color-accent); margin-bottom: 20px; }
-        .benefit-item h3 { margin-bottom: 10px; }
+        .benefit-item .icon { color: var(--color-accent); margin-bottom: 15px; }
+        .benefit-item h3 { margin-bottom: 12px; }
 
         /* === BLOK 3: JAK ZÍSKAT ODMĚNY === */
         .rewards { background-color: var(--color-white); }
-        .reward-highlight { text-align: center; margin: 40px 0 70px 0; }
+        .reward-highlight { text-align: center; margin: 40px 0 60px 0; }
         .reward-highlight .percentage {
             font-family: var(--font-heading);
-            font-size: 140px;
-            font-weight: 700;
+            font-size: 120px;
+            font-weight: 800;
             color: var(--color-primary);
-            line-height: 0.9;
+            line-height: 1;
         }
-        .reward-highlight p { font-size: 22px; color: var(--color-text); }
-        .how-it-works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .reward-highlight p { font-size: 20px; color: var(--color-text); font-weight: 600; }
+        .how-it-works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 35px; }
         .how-item { text-align: center; }
-        .how-item .icon { color: var(--color-accent); margin-bottom: 20px; }
-        .how-item h3 { margin-bottom: 10px; }
-        .rewards .note { text-align: center; margin-top: 50px; font-style: italic; }
+        .how-item .icon { color: var(--color-accent); margin-bottom: 18px; }
+        .how-item h3 { margin-bottom: 12px; }
+        .rewards .note { text-align: center; margin-top: 35px; margin-bottom: 35px; font-style: italic; color: #666; }
 
         /* === BLOK 4: KALKULAČKY (S VLNAMI) === */
         #calculator-section {
@@ -197,29 +206,30 @@
         .wave-top svg, .wave-bottom svg {
             display: block;
             width: 100%;
-            height: 120px; /* Snížená výška vlny */
+            height: 100px;
             position: relative;
             z-index: 1;
         }
         .calculator-bg {
-            background: var(--color-background);
-            padding: 80px 0;
+            background: var(--color-light-bg);
+            padding: 70px 0;
         }
         .calculator-wrapper-custom {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
+            gap: 35px;
         }
         .calculator-box {
             background-color: var(--color-white);
-            padding: 40px;
+            padding: 35px;
             border-radius: var(--border-radius);
             text-align: center;
             box-shadow: var(--shadow-medium);
-            border-top: 5px solid var(--color-accent);
+            border-top: 4px solid var(--color-accent);
             width: 100%;
             max-width: 600px;
+            border: 1px solid var(--color-border);
         }
         .separator-text-custom {
             text-align: center;
@@ -264,10 +274,10 @@
             background: var(--color-primary);
         }
         .calculator-box .reward-value {
-            font-size: 52px;
-            font-weight: 600;
+            font-size: 48px;
+            font-weight: 700;
             color: var(--color-primary);
-            margin: 10px 0;
+            margin: 12px 0;
         }
 
         
@@ -276,7 +286,7 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-1 * (480px * 4))); } /* (šířka karty + mezera) * počet karet */
         }
-        .testimonial-section { background-color: var(--color-white); }
+        .testimonial-section { background-color: var(--color-light-bg); }
         .testimonial-slider { overflow: hidden; padding: 20px 0; white-space: nowrap; }
         .testimonial-track { 
             display: flex; 
@@ -289,54 +299,56 @@
             flex-direction: column;
             width: 450px; /* ZMĚNA: Širší karta pro obdélníkový tvar */
             margin: 0 15px;
-            padding: 35px;
+            padding: 30px;
             background: var(--color-white);
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-subtle);
             white-space: normal;
+            border: 1px solid var(--color-border);
         }
-        .testimonial-card .quote-icon { color: var(--color-accent); margin-bottom: 15px; }
+        .testimonial-card .quote-icon { color: var(--color-accent); margin-bottom: 12px; }
         .testimonial-card .quote {
             font-family: var(--font-heading);
-            font-size: 22px;
-            line-height: 1.5;
+            font-size: 18px;
+            line-height: 1.6;
             flex-grow: 1;
+            font-weight: 400;
         }
         .testimonial-card .author-info {
-            margin-top: 25px;
+            margin-top: 20px;
             border-top: 1px solid var(--color-border);
-            padding-top: 25px;
+            padding-top: 20px;
         }
         .author-info .author { font-weight: 600; }
-        .author-info .earnings { font-size: 14px; color: var(--color-primary); }
+        .author-info .earnings { font-size: 14px; color: var(--color-primary); font-weight: 600; }
 
         /* === BLOK 7: ÚSPĚŠNOST === */
         .success-rate { background: var(--color-white); position:relative; overflow:hidden; }
         .success-bg-circle {
             position: absolute;
             z-index: 0;
-            opacity: 0.1;
+            opacity: 0.05;
         }
         .comparison-flex {
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            gap: 60px;
+            gap: 50px;
             border: 2px dashed var(--color-border);
-            padding: 60px;
+            padding: 50px;
             border-radius: var(--border-radius);
             position: relative;
             z-index: 1;
         }
         .comparison-item .value {
             font-family: var(--font-heading);
-            font-size: 80px;
-            font-weight: 700;
+            font-size: 72px;
+            font-weight: 800;
         }
         .comparison-item-grey .value,
         .value-grey {
-            color: #B0B0B0;
+            color: #CCCCCC;
             opacity: 0.7;
             filter: grayscale(1);
         }
@@ -344,32 +356,35 @@
             opacity: 0.7;
         }
         .comparison-item-highlight {
-            background: #f7faf7;
-            border: 2px solid var(--color-primary);
-            box-shadow: 0 4px 24px rgba(107,122,106,0.10);
+            background: #f0f8f0;
+            border: 2px solid var(--color-accent);
+            box-shadow: 0 4px 16px rgba(151, 201, 61, 0.15);
             border-radius: var(--border-radius);
-            padding: 40px 30px;
+            padding: 35px 25px;
             position: relative;
             z-index: 2;
         }
         .comparison-item-highlight .value,
         .value-highlight {
             color: var(--color-primary);
-            text-shadow: 0 2px 10px rgba(107,122,106,0.15);
+            text-shadow: 0 2px 8px rgba(91, 164, 207, 0.1);
         }
         .comparison-item p { max-width: 250px; margin: 0 auto; }
         .divider-vertical {
             width: 2px;
-            height: 100px;
+            height: 90px;
             background-color: var(--color-border);
         }
-        .success-rate .outro { text-align: center; margin-top: 40px; font-size: 18px; font-weight: 400; }
+        .success-rate .outro { text-align: center; margin-top: 35px; font-size: 17px; font-weight: 400; }
 
         /* === BLOK 8: MAPA === */
+        .world-map {
+            background-color: var(--color-light-bg);
+        }
         .world-map p {
             text-align: center;
             max-width: 700px;
-            margin: -40px auto 40px auto;
+            margin: -35px auto 35px auto;
         }
         .world-map img {
             display: block;
@@ -381,18 +396,21 @@
         }
 
         /* === BLOK 9: SHRNUTÍ === */
+        .summary {
+            background-color: var(--color-white);
+        }
         .summary ul {
             list-style: none;
             max-width: 850px;
             margin: auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px 40px;
-            font-size: 17px;
+            gap: 22px 35px;
+            font-size: 16px;
         }
         .summary li { display: flex; align-items: flex-start; }
-        .summary li .icon { color: var(--color-accent); margin-right: 15px; flex-shrink: 0; margin-top: 4px; }
-        .summary .cta-wrapper { text-align: center; margin-top: 60px; }
+        .summary li .icon { color: var(--color-accent); margin-right: 12px; flex-shrink: 0; margin-top: 3px; }
+        .summary .cta-wrapper { text-align: center; margin-top: 50px; }
 
         /* === BLOK 10: FORMULÁŘ === */
         .contact-form { background-color: var(--color-primary); color: var(--color-white); }
@@ -442,22 +460,31 @@
         .form-container .bonus-text { font-size: 14px; margin-top: 20px; opacity: 0.8; }
 
         /* === BLOK 11: FAQ === */
+        .faq {
+            background-color: var(--color-light-bg);
+        }
         .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid var(--color-border); }
+        .faq-item { 
+            border-bottom: 1px solid var(--color-border);
+            background-color: var(--color-white);
+            margin-bottom: 12px;
+            border-radius: var(--border-radius);
+            padding: 0 20px;
+        }
         .faq-item summary {
             font-weight: 600;
-            font-size: 18px;
+            font-size: 17px;
             cursor: pointer;
             list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 0;
+            padding: 20px 0;
         }
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item .icon { color: var(--color-primary); transition: transform 0.3s ease; }
         .faq-item[open] summary .icon { transform: rotate(45deg); }
-        .faq-item .answer { padding-bottom: 25px; color: #666; max-width: 95%; }
+        .faq-item .answer { padding-bottom: 20px; color: #666; max-width: 95%; line-height: 1.7; }
 
         /* === RESPONZIVNÍ DESIGN === */
         @media (max-width: 992px) {
@@ -476,16 +503,16 @@
         }
 
         @media (max-width: 768px) {
-            body { font-size: 16px; }
-            .section { padding: 80px 0; }
-            h1 { font-size: 40px; }
-            h2 { font-size: 34px; margin-bottom: 40px; }
+            body { font-size: 15px; }
+            .section { padding: 70px 0; }
+            h1 { font-size: 36px; }
+            h2 { font-size: 30px; margin-bottom: 35px; }
             .how-it-works-grid { grid-template-columns: 1fr; }
-            .comparison-flex { flex-direction: column; padding: 40px 20px; gap: 40px; }
+            .comparison-flex { flex-direction: column; padding: 35px 20px; gap: 35px; }
             .divider-vertical { display: none; }
             .benefits-grid { grid-template-columns: 1fr; }
-            .wave-top svg, .wave-bottom svg { height: 80px; }
-            .calculator-bg { padding: 40px 0; }
+            .wave-top svg, .wave-bottom svg { height: 70px; }
+            .calculator-bg { padding: 35px 0; }
         }
 
         /* === BĚHACÍ TEXT PO KŘIVCE === */
@@ -524,8 +551,8 @@
         .curved-loop-text {
           font-family: var(--font-body);
           font-size: 48px;
-          font-weight: 700;
-          letter-spacing: 5px;
+          font-weight: 800;
+          letter-spacing: 4px;
           text-transform: uppercase;
           fill: var(--color-primary);
           stroke: #fff;
@@ -545,8 +572,8 @@
 
         /* === ANIMOVANÝ SLOUPCOVÝ GRAF S EXPONENCIÁLNÍ KŘIVKOU === */
         .animated-bar-chart-section {
-            padding: 120px 0;
-            background: #fff;
+            padding: 100px 0;
+            background: var(--color-white);
         }
         .bar-chart-wrapper {
             display: flex;
@@ -558,18 +585,18 @@
             height: 340px;
         }
         .axes {
-            stroke: #EAE3DC;
+            stroke: var(--color-border);
             stroke-width: 2;
         }
         .bars {
             fill: none;
             stroke-width: 4;
         }
-        .bar-brown { fill: #A67C52; rx: 0; }
-        .bar-green { fill: #6B7A6A; rx: 0; }
+        .bar-brown { fill: #6B8E6B; rx: 0; }
+        .bar-green { fill: #5BA4CF; rx: 0; }
         .x-labels {
-            font-size: 16px;
-            fill: #4E4E4E;
+            font-size: 15px;
+            fill: var(--color-text);
             font-weight: 600;
         }
         .x-labels text {
@@ -579,8 +606,8 @@
             opacity: 0;
         }
         .trend-curve {
-            stroke: var(--color-accent);
-            stroke-width: 5;
+            stroke: var(--color-primary);
+            stroke-width: 4;
             marker-end: url(#arrowhead);
         }
         .trend-glint {
@@ -595,24 +622,24 @@
             gap: 10px;
         }
         .legend-color {
-            width: 20px;
-            height: 20px;
-            border-radius: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 3px;
         }
         .bar-chart-legend {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 18px;
+            gap: 25px;
+            margin-top: 16px;
         }
         @media (min-width: 769px) {
             .bar-chart-title {
-                margin-bottom: 64px;
+                margin-bottom: 56px;
             }
         }
         /* === NOVÝ BLOK: NEJSME MLM, ALE PARTNERSTVÍ === */
         .not-mlm-section {
-            background: linear-gradient(120deg, #f8f8f8 60%, #e6e0d8 100%);
+            background: var(--color-light-bg);
             margin-top: 0;
             padding-top: 60px;
             padding-bottom: 60px;
@@ -621,7 +648,7 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 60px;
+            gap: 50px;
         }
         .not-mlm-section .container > div {
             flex: 1;
@@ -630,33 +657,33 @@
         .not-mlm-section h2 {
             color: var(--color-primary);
             text-align: left;
-            margin-bottom: 22px;
-            font-size: 32px;
+            margin-bottom: 20px;
+            font-size: 30px;
             font-family: var(--font-heading);
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.3;
         }
         .not-mlm-section ul {
             list-style: none;
             padding: 0;
-            font-size: 17px;
-            line-height: 1.7;
+            font-size: 16px;
+            line-height: 1.8;
         }
         .not-mlm-section ul li {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             display: flex;
             align-items: flex-start;
         }
         .not-mlm-section ul li .icon {
             color: var(--color-accent);
-            font-size: 22px;
-            margin-right: 12px;
+            font-size: 20px;
+            margin-right: 10px;
             flex-shrink: 0;
             margin-top: 2px;
         }
         .not-mlm-section ul li span:last-child {
             color: var(--color-text);
-            font-size: 17px;
+            font-size: 16px;
             font-family: var(--font-body);
             font-weight: 400;
         }
@@ -669,17 +696,17 @@
         @media (max-width: 768px) {
             .not-mlm-section .container {
                 flex-direction: column;
-                gap: 30px;
+                gap: 25px;
             }
             .not-mlm-section h2 {
-                font-size: 22px;
+                font-size: 24px;
                 text-align: center;
             }
         }
 
         /* === BLOK: POZVÁNÍ NA KÁVU === */
         .coffee-invitation-section {
-            background: linear-gradient(135deg, var(--color-primary) 0%, #5a6859 100%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, #4A8DB5 100%);
             color: var(--color-white);
             position: relative;
             overflow: hidden;
@@ -792,7 +819,7 @@
         .custom-select-trigger.active {
             border-color: var(--color-accent);
             background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 0 3px rgba(217, 162, 138, 0.3);
+            box-shadow: 0 0 0 3px rgba(151, 201, 61, 0.3);
         }
         .custom-select-trigger.placeholder {
             color: rgba(255, 255, 255, 0.7);
@@ -814,7 +841,7 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: rgba(107, 122, 106, 0.95);
+            background: rgba(91, 164, 207, 0.95);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
@@ -845,11 +872,12 @@
         }
         .custom-select-option:hover,
         .custom-select-option.highlighted {
-            background: rgba(217, 162, 138, 0.3);
+            background: rgba(151, 201, 61, 0.3);
         }
         .custom-select-option.selected {
             background: var(--color-accent);
             font-weight: 600;
+            color: var(--color-primary);
         }
         .custom-select-option.placeholder {
             color: rgba(255, 255, 255, 0.5);
@@ -924,22 +952,23 @@
 
         .coffee-submit-btn {
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: var(--color-accent);
             color: var(--color-white);
             border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(217, 162, 138, 0.4);
-            margin-top: 30px;
+            box-shadow: 0 2px 8px rgba(151, 201, 61, 0.4);
+            margin-top: 25px;
         }
         .coffee-submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(217, 162, 138, 0.6);
-            background: #c8916f;
+            box-shadow: 0 4px 12px rgba(151, 201, 61, 0.6);
+            background: #8BC234;
+            color: var(--color-white);
         }
         
         @media (max-width: 768px) {
@@ -1015,8 +1044,8 @@
    
 
     <header class="hero section">
-        <svg class="hero-bg-circle" width="500" height="500" viewBox="0 0 500 500" fill="none"><circle cx="250" cy="250" r="250" fill="#6B7A6A"/></svg>
-        <svg class="hero-bg-dot" width="120" height="120" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="60" fill="#D9A28A"/></svg>
+        <svg class="hero-bg-circle" width="500" height="500" viewBox="0 0 500 500" fill="none"><circle cx="250" cy="250" r="250" fill="#5BA4CF"/></svg>
+        <svg class="hero-bg-dot" width="120" height="120" viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="60" fill="#97C93D"/></svg>
         <div class="container hero-content">
             <div class="hero-text">
                 <p class="sub-heading">STAŇTE SE PARTNEREM BEWIT</p>
@@ -1149,7 +1178,7 @@
         </section> -->
 
         <!-- === CTA TLAČÍTKO === -->
-        <section class="section" style="padding: 60px 0; background-color: var(--color-white);">
+        <section class="section" style="padding: 30px 0; background-color: var(--color-white);">
             <div class="container" style="text-align: center;">
                 <a href="#formular" class="btn btn-primary" style="font-size: 20px; padding: 20px 40px;">Chci začít vydělávat</a>
             </div>
@@ -1203,10 +1232,10 @@
                         </g>
                         <!-- Křivka a šipka (skrytá, zobrazí se po animaci sloupců) -->
                         <g class="trend-group" style="opacity:0;">
-                            <path id="trend-curve" d="M110,300 C200,220 400,120 520,80" fill="none" stroke="#6B7A6A" stroke-width="4" marker-end="url(#arrowhead)"/>
+                            <path id="trend-curve" d="M110,300 C200,220 400,120 520,80" fill="none" stroke="#5BA4CF" stroke-width="4" marker-end="url(#arrowhead)"/>
                             <defs>
                                 <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto" markerUnits="strokeWidth">
-                                    <polygon points="0,0 6,3 0,6 1.5,3" fill="#6B7A6A"/>
+                                    <polygon points="0,0 6,3 0,6 1.5,3" fill="#5BA4CF"/>
                                 </marker>
                             </defs>
                             <!-- Odlesk -->
@@ -1215,10 +1244,10 @@
                     </svg>
                 </div>
                 <div class="bar-chart-legend" style="display:flex;justify-content:center;gap:30px;margin-top:18px;">
-                    <span class="legend-brown"><span class="legend-color" style="background:#A67C52;"></span> Vaši zákazníci</span>
-                    <span class="legend-green"><span class="legend-color" style="background:#6B7A6A;"></span> Přátelé přivedeni vašimi zákazníky</span>
+                    <span class="legend-brown"><span class="legend-color" style="background:#6B8E6B;"></span> Vaši zákazníci</span>
+                    <span class="legend-green"><span class="legend-color" style="background:#5BA4CF;"></span> Přátelé přivedeni vašimi zákazníky</span>
                 </div>
-                <div class="bar-chart-note" style="max-width:700px;margin:32px auto 0 auto;text-align:center;font-size:1.18em;color:#4E4E4E;background:#f8f8f8;padding:22px 28px;border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                <div class="bar-chart-note" style="max-width:700px;margin:32px auto 0 auto;text-align:center;font-size:1.1em;color:#333333;background:#F5F5F5;padding:20px 26px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
                     <strong>Naše produkty mají výjimečnou schopnost šířit se samy díky své kvalitě 
     a nadšení zákazníků.</strong><br>
     Naše produkty si získávají oblibu samy svou kvalitou a zkušenostmi zákazníků.
@@ -1427,8 +1456,8 @@
         </section>
         
         <section class="section success-rate">
-            <svg class="success-bg-circle" width="220" height="220" viewBox="0 0 220 220" style="left:-70px; top:10px;" fill="none"><circle cx="110" cy="110" r="110" fill="#6B7A6A"/></svg>
-            <svg class="success-bg-circle" width="120" height="120" viewBox="0 0 120 120" style="right:-50px; bottom:-30px; left:auto; top:auto; position:absolute;" fill="none"><circle cx="60" cy="60" r="60" fill="#6B7A6A"/></svg>
+            <svg class="success-bg-circle" width="220" height="220" viewBox="0 0 220 220" style="left:-70px; top:10px;" fill="none"><circle cx="110" cy="110" r="110" fill="#5BA4CF"/></svg>
+            <svg class="success-bg-circle" width="120" height="120" viewBox="0 0 120 120" style="right:-50px; bottom:-30px; left:auto; top:auto; position:absolute;" fill="none"><circle cx="60" cy="60" r="60" fill="#5BA4CF"/></svg>
           
             <div class="container">
                 <h2>Jiný. Lepší. BEWIT.</h2>
@@ -1541,7 +1570,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section faq">
             <div class="container">
                 <h2>Máte otázky? Máme odpovědi.</h2>
                 <div class="faq-container">
