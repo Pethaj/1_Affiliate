@@ -48,6 +48,7 @@
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
         /* === KONTEJNER A SEKCE === */
@@ -318,6 +319,19 @@
             margin-top: 20px;
             border-top: 1px solid var(--color-border);
             padding-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .author-info img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .author-info > div {
+            flex-grow: 1;
         }
         .author-info .author { font-weight: 600; }
         .author-info .earnings { font-size: 14px; color: var(--color-primary); font-weight: 600; }
@@ -1378,112 +1392,81 @@
             </div>
             <div class="testimonial-slider">
                 <div class="testimonial-track">
-                    <!-- SADA 1: 4 ORIGINÁLNÍ KARTY -->
+                    <!-- SADA 1: 5 ORIGINÁLNÍCH KARET -->
                     <div class="testimonial-card">
                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
-                        <p class="quote">"Produkty Bewit doporučuji svým klientům, protože jim věřím. Provize je pro mě skvělý bonus, který mi snadno zaplatí nájem ordinace."</p>
+                        <p class="quote">"Nádherná citrusová vůně jako kdybych rozkrojila čerstvě utržený, chemicky neošetřený, pomeranč. V mžiku navodí pozitivní náladu a energii, voní dětem i dospělým. Tento olejíček je u nás doma velmi oblíbený. Využíváme ho často i v kuchyni."</p>
                         <div class="author-info">
+                            <img src="https://api.mybewit.com/files/users/photos/ing-vladi-pipkova-phd-68415bf7a822f.jpeg" alt="Vlada Pipková">
                             <div>
-                                <div class="author">Jana, Terapeutka</div>
-                                <div class="earnings">prům. 18 000 Kč / měsíc</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
-                        <p class="quote">"Napsal jsem dva články o esenciálních olejích a od té doby mi chodí peníze každý měsíc. Je to nejjednodušší affiliate program, ve kterém jsem."</p>
-                        <div class="author-info">
-                            <div>
-                                <div class="author">Tomáš, Blogger</div>
-                                <div class="earnings">prům. 25 000 Kč / měsíc</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
-                        <p class="quote">"Jako maminka na mateřské jsem hledala přivýdělek, který by mě bavil. Doporučuji kamarádkám a ony zase dál. Je to skvělé."</p>
-                        <div class="author-info">
-                            <div>
-                                <div class="author">Klára, Maminka na MD</div>
-                                <div class="earnings">prům. 9 500 Kč / měsíc</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
-                        <p class="quote">"Nejdřív jsem byl skeptický, ale teď lituji, že jsem nezačal dřív. Systém je transparentní a podpora Bewit je opravdu lidská a ochotná."</p>
-                        <div class="author-info">
-                            <div>
-                                <div class="author">Petr, IT specialista</div>
-                                <div class="earnings">prům. 32 000 Kč / měsíc</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- SADA 2: 4 KARTY JAKO KOPIE PRO PLYNULOU ANIMACI -->
-                    <div class="testimonial-card">
-                        <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
-                        <p class="quote">"Produkty Bewit doporučuji svým klientům, protože jim věřím. Provize je pro mě skvělý bonus, který mi snadno zaplatí nájem ordinace."</p>
-                        <div class="author-info">
-                            <div>
-                                <div class="author">Jana, Terapeutka</div>
-                                <div class="earnings">prům. 18 000 Kč / měsíc</div>
+                                <div class="author">Vlada Pipková</div>
+                                <div class="earnings">Pomeranč esenciální olej</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
-                        <p class="quote">"Produkty Bewit doporučuji svým klientům, protože jim věřím. Provize je pro mě skvělý bonus, který mi snadno zaplatí nájem ordinace."</p>
+                        <p class="quote">"Jsem milovníkem kávy a tak se stala Coffee king mým ranním rituálem. Káva plné a silné chuti, kterou si připravuji obvykle s Bio Organic Coconut milk powder. Společně s houbičkami vzniká naprosto bezkonkurenční koktejl chutí. Tahle káva předčila mé očekávání."</p>
                         <div class="author-info">
+                            <img src="https://api.mybewit.com/files/users/photos/petra-kubankova-6648713ea344f.jpeg" alt="Petra Kubánková">
                             <div>
-                                <div class="author">Tomáš, Blogger</div>
-                                <div class="earnings">prům. 25 000 Kč / měsíc</div>
+                                <div class="author">Petra Kubánková</div>
+                                <div class="earnings">Coffee King</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial-card">
                          <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
-                        <p class="quote">"Jako maminka na mateřské jsem hledala přivýdělek, který by mě bavil. Doporučuji kamarádkám a ony zase dál. Je to skvělé."</p>
+                        <p class="quote">"Tenhle olejíček je další můj favorit na první dobrou, jak se říká. Nejenže krásně voní, je to další produkt, který mi nesmí chybět jak doma, tak v práci, na cestách, v autě. Vždy je mi nápomocen, takový anděl strážný. Když ho mám jsem v klidu, každá situace vždy dobře dopadne."</p>
                         <div class="author-info">
+                            <img src="https://bewit.love/images/hodnoceni/2025/09/db0343a3d307f2c0794b895f5c31a6ee/17579447710622552992070849615599-square.jpg" alt="Martin N.">
                             <div>
-                                <div class="author">Klára, Maminka na MD</div>
-                                <div class="earnings">prům. 9 500 Kč / měsíc</div>
+                                <div class="author">Martin N.</div>
+                                <div class="earnings">Soulguard esenciální olej</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial-card">
-                         <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
-                        <p class="quote">"Nejdřív jsem byl skeptický, ale teď lituji, že jsem nezačal dřív. Systém je transparentní a podpora Bewit je opravdu lidská a ochotná."</p>
+                        <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
+                        <p class="quote">"Nevím proč, ale vůně mi lehce připomíná vůni lineckého cukroví. Tyto oleje Suby C-1,2,3 si mě k sobě přivolaly, já jim otevřela své srdce a pustila je dovnitř. Tak nějak po nich vnitřně volám, aby svou laskavostí naplnily mé zmatené buňky a opravily jim špatnou mapu."</p>
                         <div class="author-info">
+                            <img src="https://bewit.love/images/hodnoceni/2025/09/2d6ba3b1f62100243e900e62967096ff/1757603105262.-square.jpg" alt="Lada J.">
                             <div>
-                                <div class="author">Petr, IT specialista</div>
-                                <div class="earnings">prům. 32 000 Kč / měsíc</div>
+                                <div class="author">Lada J.</div>
+                                <div class="earnings">Suby C-3 esenciální olej</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="quote-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-1.005.144-.302.341-.536.592-.704.251-.168.559-.252.923-.252.336 0 .614.074.836.222.223.148.336.335.336.562 0 .227-.11.416-.33.558a1.03 1.03 0 0 1-.498.158 1.03 1.03 0 0 1-.498-.158l-.002-.002c-.146-.093-.22-.21-.22-.353 0-.065.015-.123.046-.175.032-.052.08-.095.144-.128.065-.032.137-.048.216-.048.196 0 .358.07.486.21.128.14.192.312.192.516 0 .4-.15.758-.45 1.076-.302.318-.724.529-1.266.634-.54.106-1.033.253-1.478.442a3.12 3.12 0 0 0-.979.72c-.264.282-.46.63-.589 1.043-.13.413-.194.87-.194 1.374V11c0 .552.448 1 1 1h2Z"/></svg></div>
+                        <p class="quote">"Skořice Kasie to byla láska hned na první nadechnutí. Velmi příjemná vůně… jako by byla smíchána i se skořicí. Koupila jsem na zkoušku malou lahvičku, ale hned jdu objednat dvě velké. Na podzim a v zimě se bude velmi hodit."</p>
+                        <div class="author-info">
+                            <img src="https://api.mybewit.com/files/users/photos/michaela-amairis-salsova-6305ea72959ac.jpeg" alt="Michaela Salsová">
+                            <div>
+                                <div class="author">Michaela Salsová</div>
+                                <div class="earnings">Skořice Kasie esenciální olej</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- === KONEC TESTIMONIALŮ === -->
         
         <section class="section success-rate">
             <svg class="success-bg-circle" width="220" height="220" viewBox="0 0 220 220" style="left:-70px; top:10px;" fill="none"><circle cx="110" cy="110" r="110" fill="#5BA4CF"/></svg>
             <svg class="success-bg-circle" width="120" height="120" viewBox="0 0 120 120" style="right:-50px; bottom:-30px; left:auto; top:auto; position:absolute;" fill="none"><circle cx="60" cy="60" r="60" fill="#5BA4CF"/></svg>
           
             <div class="container">
-                <h2>Jiný. Lepší. BEWIT.</h2>
-                <div class="comparison-flex">
-                    <div class="comparison-item comparison-item-highlight">
-                        <div class="value value-highlight">30%</div>
-                        <p>Našich partnerů si vydělává přes <strong style="color:var(--color-primary); font-weight:700;">50 000,-</strong> měsíčně</p>
-                    </div>
-                    <div class="divider-vertical"></div>
-                    <div class="comparison-item comparison-item-grey">
-                        <div class="value value-grey">13%</div>
-                        <p>Dosáhne v klasickém klasickém síťovém marketingu výdělek vyšší než 30 000,-</p>
+                <h2>Když spojíte autenticitu s kvalitou</h2>
+                <div style="text-align: center;">
+                    <div class="comparison-item comparison-item-highlight" style="display: inline-block; max-width: 500px;">
+                        <div class="value value-highlight">146 000 Kč</div>
+                        <p>Průměrný měsíční příjem <strong style="color:var(--color-primary); font-weight:700;">top 10 partnerů</strong>, kteří sdílí svou pravdu</p>
                     </div>
                 </div>
-                <p class="outro">Pomáháme tvůrcům růst – nejen v číslech, ale i v hodnotě obsahu. 
-                    BEWIT TRUE AFFILIATE - nejlepší affiliate systém současnoti.
+                <p class="outro">BEWIT PRO Affiliate partnery – partnerství založené na důvěře, transparentních datech a férovém ocenění (provize až 30%). 
+                    Pomáháme vám růst nejen finančně, ale také v autenticitě vašeho obsahu a hlubším spojení s vaším publikem.
                     
                 </p>
             </div>
@@ -1878,7 +1861,7 @@
         // Tagy pro affiliate registraci
         tags: [
             'Affiliate', // Hlavní tag stejný jako u kavy
-            'register_universal'  // Subtag pro registraci
+            'Universal_affiliate'  // Subtag pro registraci
         ].filter(tag => tag.length > 0),
         
         // Metoda HTTP
@@ -2023,7 +2006,7 @@
         // Tagy pro kategorizaci - lze přidat více tagů
         tags: [
             'Affiliate', // TAG 1: Přidejte první tag (např. "kava-ostrava")
-            'contact_demand'  // TAG 2: Přidejte druhý tag (např. "affiliate-lead")
+            'Universal_affiliate'  // TAG 2: Přidejte druhý tag (např. "affiliate-lead")
         ].filter(tag => tag.length > 0), // Odfiltruje prázdné tagy
         
         // Metoda HTTP (obvykle POST)
