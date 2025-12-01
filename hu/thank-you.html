@@ -344,21 +344,21 @@
                     <p style="margin: 0; font-size: 18px; font-weight: 600; color: var(--color-white);">2/2. lépés – Rólad és az együttműködésről</p>
                 </div>
                 <h1 style="margin-top: 20px;">Nagyszerű. Még néhány részlet, és kezdhetünk együtt!</h1>
-                <p style="font-size: 20px; margin-bottom: 30px;">Hogy a legjobb támogatást tudjuk nyújtani, kérjük, áruld el, hogyan szeretnél a BEWIT-tel együttműködni. Az űrlap kitöltése csak 1-2 percet vesz igénybe.</p>
+                <p style="font-size: 20px; margin-bottom: 30px;">Hogy a legjobb támogatást tudjuk nyújtani, kérjük, árulja el, hogyan szeretne a BEWIT-tel együttműködni. Az űrlap kitöltése csak 1-2 percet vesz igénybe.</p>
             </div>
 
             <div class="survey-form">
                 <h2>Kérdőív új partnerek számára</h2>
-                <p style="font-size: 20px; margin-bottom: 30px;">Minden partner egyedi számunkra. Ezért szeretnénk tudni, hogyan szeretnéd megosztani a BEWIT termékeket, és miben tudjuk megkönnyíteni a dolgod. Így pontosan olyan eszközöket, támogatást és anyagokat tudunk készíteni, amelyeket a legjobban tudsz használni.</p>
+                <p style="font-size: 20px; margin-bottom: 30px;">Minden partner egyedi számunkra. Ezért szeretnénk tudni, hogyan szeretné megosztani a BEWIT termékeket, és miben tudjuk megkönnyíteni a dolgát. Így pontosan olyan eszközöket, támogatást és anyagokat tudunk készíteni, amelyeket a legjobban tud használni.</p>
                 <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437">
                     
                     <div class="form-group">
-                        <label for="profession">Mesélj röviden magadról?</label>
-                        <input type="text" id="profession" name="profession" placeholder="pl. mivel foglalkozol, milyen közösséged van, miért érdekelt a BEWIT..." required>
+                        <label for="profession">Meséljen röviden magáról?</label>
+                        <input type="text" id="profession" name="profession" placeholder="pl. mivel foglalkozik, milyen közössége van, miért érdekelte a BEWIT..." required>
                     </div>
 
                     <div class="form-group">
-                        <label>Mekkora az elérésed?</label>
+                        <label>Mekkora az elérése?</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="radio" id="network-zacatecnik" name="network-size" value="0-50" required>
@@ -384,7 +384,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Hogyan szeretnéd megosztani a BEWIT termékeket?</label>
+                        <label>Hogyan szeretné megosztani a BEWIT termékeket?</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="social-media" name="promotion[]" value="socialni-site">
@@ -412,7 +412,7 @@
                             </div>
                         </div>
                         <div id="promotion-other-input" style="display: none; margin-top: 15px;">
-                            <input type="text" id="promotion-other-text" name="promotion-other-text" placeholder="Kérlek add meg, milyen módon...">
+                            <input type="text" id="promotion-other-text" name="promotion-other-text" placeholder="Kérem adja meg, milyen módon...">
                         </div>
                     </div>
 
@@ -555,6 +555,9 @@
                 }
             }
             
+            // Přidání kódu země
+            data.country = 'HU';
+            
             console.log('🚀 Kérdőív küldése a webhookra:', data);
             
             fetch('https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437', {
@@ -566,7 +569,7 @@
             })
             .then(response => {
                 if (response.ok) {
-                    showSuccessMessage('Köszönjük a kérdőív kitöltését! Hamarosan felvesszük veled a kapcsolatot további információkkal.');
+                    showSuccessMessage('Köszönjük a kérdőív kitöltését! Hamarosan felvesszük Önnel a kapcsolatot további információkkal.');
                     
                     const surveyForm = document.querySelector('.survey-form');
                     const thankYouSection = document.querySelector('.thank-you-section');
@@ -579,7 +582,7 @@
                         thankYouSection.innerHTML = `
                             <h1>Köszönjük érdeklődésedet!</h1>
                             <p style="font-size: 20px; margin-bottom: 30px;">A kérdőív sikeresen elküldve.</p>
-                            <p style="font-size: 18px; color: var(--color-white); opacity: 0.9;">Hamarosan felvesszük veled a kapcsolatot az affiliate programmal kapcsolatos további információkkal.</p>
+                            <p style="font-size: 18px; color: var(--color-white); opacity: 0.9;">Hamarosan felvesszük Önnel a kapcsolatot az affiliate programmal kapcsolatos további információkkal.</p>
                         `;
                     }
                 } else {
@@ -588,7 +591,7 @@
             })
             .catch(error => {
                 console.error('Hiba:', error);
-                showErrorMessage('Hiba történt a kérdőív elküldésekor. Kérjük, próbáld újra.');
+                showErrorMessage('Hiba történt a kérdőív elküldésekor. Kérjük, próbálja újra.');
             });
         });
 
@@ -746,6 +749,7 @@
     </script>
 </body>
 </html>
+
 
 
 

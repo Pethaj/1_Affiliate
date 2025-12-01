@@ -467,21 +467,21 @@
                 <div style="background: rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; text-align: center; border: 2px solid rgba(255,255,255,0.2); display: inline-block;">
                     <p style="margin: 0; font-size: 18px; font-weight: 600; color: var(--color-white);">Pasul 2/2 – Despre tine și colaborare</p>
                 </div>
-                <h1 style="margin-top: 20px;">Perfect. Încă câteva detalii și putem începe împreună!</h1>
-                <p style="font-size: 20px; margin-bottom: 30px;">Pentru a vă putea oferi cel mai bun suport, vă rugăm să ne spuneți cum doriți să colaborați cu BEWIT. Formularul vă va lua doar 1-2 minute.</p>
+                <h1 style="margin-top: 20px;">Perfect. Doar câteva detalii și putem începe împreună!</h1>
+                <p style="font-size: 20px; margin-bottom: 30px;">Pentru a vă putea oferi cel mai bun suport, vă rugăm să ne spuneți cum doriți să colaborați cu BEWIT. Completarea formularului va dura doar 1-2 minute.</p>
             </div>
 
             <!-- === DOTAZNÍK === -->
             <div class="survey-form">
                 
-                <h2>Chestionar pentru parteneri noi</h2>
-                <p style="font-size: 20px; margin-bottom: 30px;">Fiecare partener este unic pentru noi. De aceea am dori să știm cum doriți să distribuiți produsele BEWIT și în ce vă putem facilita treaba. Astfel vă putem pregăti exact instrumentele, suportul și materialele pe care le veți folosi cel mai bine.</p>
+                <h2>Formular pentru parteneri noi</h2>
+                <p style="font-size: 20px; margin-bottom: 30px;">Fiecare partener este unic pentru noi. De aceea am dori să știm cum doriți să distribuiți produsele BEWIT și în ce vă putem facilita treaba. Astfel vă putem pregăti exact acele instrumente, suportul și materialele pe care le veți folosi cu maximă eficiență.</p>
                 <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437">
                     
                     <!-- Profese -->
                     <div class="form-group">
                         <label for="profession">Spuneți-ne pe scurt ceva despre dvs.?</label>
-                        <input type="text" id="profession" name="profession" placeholder="de ex. cu ce vă ocupați, ce comunitate aveți, de ce v-a interesat BEWIT..." required>
+                        <input type="text" id="profession" name="profession" placeholder="de ex. cu ce te ocupi, ce comunitate ai și de ce te-ai interesat de produsele Bewit?" required>
                     </div>
 
                     <!-- Velikost prodejní sítě -->
@@ -549,7 +549,7 @@
                     <button type="submit" class="btn">Trimite formularul</button>
                     
                     <p style="text-align: center; margin-top: 20px; font-size: 15px; color: rgba(255,255,255,0.8); font-style: italic; line-height: 1.6;">
-                        (După trimiterea formularului vă vom crea un cont și vom trimite datele de acces. Noi ne ocupăm de restul).
+                        (După trimiterea formularului vă vom crea un cont și vom trimite datele de acces. De restul ne ocupăm noi).
                     </p>
                 </form>
             </div>
@@ -714,6 +714,9 @@
                     }
                 }
             }
+            
+            // Přidání kódu země
+            data.country = 'RO';
             
             // Debug log pro ověření dat
             console.log('🚀 Odesílám dotazník na webhook:', data);
@@ -936,6 +939,7 @@
     </script>
 </body>
 </html>
+
 
 
 
