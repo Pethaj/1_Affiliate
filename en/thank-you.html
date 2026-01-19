@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Interest | BEWIT Affiliate Program</title>
+    <link rel="icon" type="image/x-icon" href="https://ekhodnqiqxkrlnqklxrb.supabase.co/storage/v1/object/public/Images/favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === DESIGN SYSTÉM === */
+        :root {
+            --color-primary: #5BA4CF;      /* Světle modrá */
+            --color-accent: #97C93D;       /* Světle zelená */
+            --color-background: #FFFFFF;   /* Bílá */
+            --color-text: #333333;         /* Tmavě šedá */
+            --color-white: #FFFFFF;
+            --color-border: #E0E0E0;
+            --color-light-bg: #F5F5F5;     /* Světle šedá pro pozadí */
+            --color-success: #4CAF50;
+
+            --font-heading: 'Open Sans', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+
+            --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
+        }
+
+        /* === ZÁKLADNÍ RESET A STYLY === */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            line-height: 1.6;
+            font-size: 16px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* === KONTEJNER A SEKCE === */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        /* === TYPOGRAFIE === */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--color-white);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        h1 { 
+            font-size: 40px; 
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        h2 { 
+            font-size: 30px; 
+            text-align: center; 
+            margin-bottom: 35px; 
+        }
+        h3 { 
+            font-size: 20px; 
+            font-family: var(--font-body); 
+            font-weight: 600; 
+            color: var(--color-text);
+            margin-bottom: 18px;
+        }
+        p { 
+            margin-bottom: 1rem; 
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        /* === DĚKOVNÁ SEKCE === */
+        .thank-you-section {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-subtle);
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* === FORMULÁŘ STYLY === */
+        .survey-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-subtle);
+            padding: 50px 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--color-white);
+            font-size: 18px;
+        }
+
+        /* === TEXTOVÉ POLE === */
+        .form-group input[type="text"],
+        #promotion-other-input input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: var(--font-body);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        #promotion-other-input input[type="text"]:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group input[type="text"]::placeholder,
+        #promotion-other-input input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+
+        /* === BAREVNÉ ZAŠKRTÁVACÍ POLE === */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"],
+        .checkbox-item input[type="radio"] {
+            display: none;
+        }
+
+        .checkbox-item .checkbox-label {
+            display: inline-block;
+            padding: 12px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked + .checkbox-label,
+        .checkbox-item input[type="radio"]:checked + .checkbox-label {
+            background-color: var(--color-accent);
+            color: white;
+            border-color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(217, 162, 138, 0.3);
+        }
+
+        .checkbox-item .checkbox-label:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-1px);
+        }
+
+        /* === POSUVNÍK === */
+        .slider-group {
+            margin-top: 20px;
+        }
+
+        .slider-container {
+            position: relative;
+            margin: 20px 0 30px 0;
+        }
+
+        .slider {
+            width: 60%;
+            height: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            appearance: none;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            border: 3px solid white;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--color-white);
+        }
+
+        .slider-value {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: 600;
+            color: var(--color-white);
+            font-size: 18px;
+        }
+
+        /* === RADIO TLAČÍTKA === */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .radio-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio-item input[type="radio"] {
+            display: none;
+        }
+
+        .radio-item .radio-label {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .radio-item input[type="radio"]:checked + .radio-label {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(107, 122, 106, 0.3);
+        }
+
+        .radio-item .radio-label:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-1px);
+        }
+
+        /* === TLAČÍTKO === */
+        .btn {
+            padding: 18px 40px;
+            background-color: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 40px auto 0;
+            box-shadow: 0 4px 10px rgba(217, 162, 138, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(217, 162, 138, 0.5);
+            background-color: #c8916f;
+        }
+
+        /* === PROGRESS BAR === */
+        .progress-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .progress-bar:hover {
+            transform: scale(1.05);
+        }
+
+        .progress-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--color-accent) var(--progress-angle, 0deg),
+                rgba(255, 255, 255, 0.2) 0deg
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .progress-circle::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-text {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .progress-percentage {
+            font-size: 18px;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .progress-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        /* === RESPONZIVNÍ DESIGN === */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            .thank-you-section,
+            .survey-form {
+                padding: 30px 20px;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .progress-bar {
+                top: 15px;
+                right: 15px;
+                width: 80px;
+                height: 80px;
+            }
+
+            .progress-circle {
+                width: 80px;
+                height: 80px;
+            }
+
+            .progress-circle::before {
+                width: 64px;
+                height: 64px;
+            }
+
+            .progress-percentage {
+                font-size: 16px;
+            }
+
+            .progress-label {
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- === PROGRESS BAR === -->
+    <div class="progress-bar" id="progressBar">
+        <div class="progress-circle" id="progressCircle">
+            <div class="progress-text">
+                <div class="progress-percentage" id="progressPercentage">0%</div>
+                <div class="progress-label">DONE</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- === DĚKOVNÁ SEKCE === -->
+        <section class="section">
+            <div class="thank-you-section">
+                <div style="background: rgba(255,255,255,0.1); padding: 15px 20px; border-radius: 8px; margin-bottom: 25px; text-align: center; border: 2px solid rgba(255,255,255,0.2); display: inline-block;">
+                    <p style="margin: 0; font-size: 18px; font-weight: 600; color: var(--color-white);">Step 2/2 – About You and Collaboration</p>
+                </div>
+                <h1 style="margin-top: 20px;">Start Building Your Successful Business with BEWIT – Register Today!</h1>
+                <p style="font-size: 20px; margin-bottom: 30px;">To offer you the best support, please tell us how you want to work with BEWIT. The form will take just 1–2 minutes.</p>
+            </div>
+
+            <!-- === QUESTIONNAIRE === -->
+            <div class="survey-form">
+                
+                <h2>Questionnaire for New Partners</h2>
+                <p style="font-size: 20px; margin-bottom: 30px;">Every partner is unique to us. That's why we'd like to know how you want to share BEWIT products and what we can do to make it easier for you. This allows us to prepare exactly the tools, support, and materials you'll use best.</p>
+                <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437">
+                    
+                    <!-- Profession -->
+                    <div class="form-group">
+                        <label for="profession">Tell us briefly about yourself?</label>
+                        <input type="text" id="profession" name="profession" placeholder="e.g. what you do, what community you have, why BEWIT interested you…" required>
+                    </div>
+
+                    <!-- Network size -->
+                    <div class="form-group">
+                        <label>How large is your reach?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-zacatecnik" name="network-size" value="0-50" required>
+                                <label for="network-zacatecnik" class="checkbox-label">0-50 contacts</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-mala" name="network-size" value="50-200" required>
+                                <label for="network-mala" class="checkbox-label">50-200 contacts</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-stredni" name="network-size" value="200-1000" required>
+                                <label for="network-stredni" class="checkbox-label">200-1000 contacts</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-velka" name="network-size" value="1000-5000" required>
+                                <label for="network-velka" class="checkbox-label">1000-5000 contacts</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="network-velmi-velka" name="network-size" value="5000+" required>
+                                <label for="network-velmi-velka" class="checkbox-label"> 5000+ contacts</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Promotion method -->
+                    <div class="form-group">
+                        <label>How do you want to share BEWIT products?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="social-media" name="promotion[]" value="social-media">
+                                <label for="social-media" class="checkbox-label">Social Media</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="own-website" name="promotion[]" value="own-website">
+                                <label for="own-website" class="checkbox-label">Own Website</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="articles" name="promotion[]" value="writing-articles">
+                                <label for="articles" class="checkbox-label">Writing Articles</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="youtube" name="promotion[]" value="youtube">
+                                <label for="youtube" class="checkbox-label">YouTube</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="direct-sales" name="promotion[]" value="direct-sales">
+                                <label for="direct-sales" class="checkbox-label">Direct Sales</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="promotion-other" name="promotion[]" value="other">
+                                <label for="promotion-other" class="checkbox-label">Other</label>
+                            </div>
+                        </div>
+                        <!-- Text field for "Other" - shows after checking -->
+                        <div id="promotion-other-input" style="display: none; margin-top: 15px;">
+                            <input type="text" id="promotion-other-text" name="promotion-other-text" placeholder="Please specify how...">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn">Submit Form</button>
+                    
+                    <p style="text-align: center; margin-top: 20px; font-size: 15px; color: rgba(255,255,255,0.8); font-style: italic; line-height: 1.6;">
+                        (After submitting the form, we'll create your account and send you login credentials. We'll take care of everything else).
+                    </p>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // === PROGRESS BAR LOGIKA ===
+        function updateProgressBar() {
+            const totalSections = 3; // Celkový počet aktivních sekcí formuláře (nezakomentované)
+            let completedSections = 0;
+            
+            // 1. Profese (textové pole)
+            const profession = document.getElementById('profession');
+            if (profession && profession.value.trim() !== '') {
+                completedSections++;
+            }
+            
+            // 2. Velikost sítě (radio buttons)
+            const networkSize = document.querySelector('input[name="network-size"]:checked');
+            if (networkSize) {
+                completedSections++;
+            }
+            
+            // 3. Způsob propagace (checkboxy)
+            const promotion = document.querySelectorAll('input[name="promotion[]"]:checked');
+            if (promotion.length > 0) {
+                completedSections++;
+            }
+            
+            // Výpočet procent - každá sekce = 33%
+            const percentage = Math.round((completedSections / totalSections) * 100);
+            const angle = (completedSections / totalSections) * 360;
+            
+            // Update progress bar
+            const progressCircle = document.getElementById('progressCircle');
+            const progressPercentage = document.getElementById('progressPercentage');
+            
+            progressCircle.style.setProperty('--progress-angle', angle + 'deg');
+            progressPercentage.textContent = percentage + '%';
+            
+            return percentage;
+        }
+
+        // Funkce pro přidání event listenerů na všechny inputy (kromě posuvníků)
+        function addProgressTrackingListeners() {
+            // Textové pole
+            const professionField = document.getElementById('profession');
+            if (professionField) {
+                professionField.addEventListener('input', updateProgressBar);
+            }
+            
+            // Radio buttons
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', updateProgressBar);
+            });
+            
+            // Checkboxy
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgressBar);
+            });
+        }
+
+        // === SYSTÉM ID ZÁKAZNÍKA ===
+        function getCustomerId() {
+            // Zkusíme získat ID z URL parametrů
+            const urlParams = new URLSearchParams(window.location.search);
+            let customerId = urlParams.get('customerId');
+            
+            // Pokud není v URL, zkusíme localStorage
+            if (!customerId) {
+                customerId = localStorage.getItem('bewitCustomerId');
+            }
+            
+            // Pokud stále nemáme ID, vygenerujeme nové (záložní řešení)
+            if (!customerId) {
+                const timestamp = Date.now().toString(36);
+                const random = Math.random().toString(36).substr(2, 9);
+                customerId = `customer_${timestamp}_${random}`;
+                localStorage.setItem('bewitCustomerId', customerId);
+                console.log('Nové záložní ID zákazníka vygenerováno:', customerId);
+            } else {
+                console.log('ID zákazníka na děkovné stránce:', customerId);
+            }
+            
+            return customerId;
+        }
+
+        // Funkce pro formátování data
+        function formatClickDate() {
+            const now = new Date();
+            const day = now.getDate();
+            const month = now.getMonth() + 1;
+            const year = now.getFullYear();
+            return `${day}.${month}.${year}`;
+        }
+
+        // === FORMULÁŘ ODESLÁNÍ ===
+        document.getElementById('affiliate-survey').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            // Převod FormData na obyčejný objekt pro lepší zpracování
+            const data = {};
+            
+            // Přidání data odeslání formuláře
+            data.clickDate = formatClickDate();
+            
+            // Přidání tagů - rozlišíme zdroj podle toho, zda máme data z coffee formuláře
+            const coffeeFormData = localStorage.getItem('coffeeFormData');
+            if (coffeeFormData) {
+                data.tags = ['Affiliate', 'survey_completed', 'from_coffee_invitation'];
+                // Přidáme také data z coffee formuláře
+                try {
+                    const coffeeData = JSON.parse(coffeeFormData);
+                    
+                    // Použijeme customerID z coffee formuláře
+                    data.customerId = coffeeData.customerId || getCustomerId();
+                    
+                    data.coffeeFormData = {
+                        firstName: coffeeData.firstName,
+                        lastName: coffeeData.lastName,
+                        email: coffeeData.email,
+                        phone: coffeeData.phone,
+                        region: coffeeData.region,
+                        privacyConsent: coffeeData.privacyConsent,
+                        marketingConsent: coffeeData.marketingConsent
+                    };
+                } catch (error) {
+                    console.error('Chyba při načítání coffee dat:', error);
+                    // Fallback na standardní generování ID
+                    data.customerId = getCustomerId();
+                }
+            } else {
+                // Pokud nepřišel z coffee formuláře, vygenerujeme nové ID
+                data.customerId = getCustomerId();
+                data.tags = ['Affiliate', 'survey_completed'];
+            }
+            
+            // Zpracování standardních polí
+            for (let [key, value] of formData.entries()) {
+                if (key.endsWith('[]')) {
+                    // Pro pole s více hodnotami (checkboxy)
+                    const cleanKey = key.replace('[]', '');
+                    if (!data[cleanKey]) {
+                        data[cleanKey] = [];
+                    }
+                    data[cleanKey].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Zpracování pole "Iné" - pokud je vyplněný text, nahradíme "ine" textem s prefixem "Iné:"
+            if (data['promotion-other-text'] && data['promotion-other-text'].trim() !== '') {
+                if (data['promotion'] && Array.isArray(data['promotion'])) {
+                    // Najdeme index hodnoty "ine" a nahradíme ji textem s prefixem "Iné:"
+                    const ineIndex = data['promotion'].indexOf('ine');
+                    if (ineIndex !== -1) {
+                        data['promotion'][ineIndex] = 'Iné: ' + data['promotion-other-text'].trim();
+                    }
+                }
+            }
+            
+            // Add country code
+            data.country = 'EN';
+            
+            // Debug log pro ověření dat
+            console.log('🚀 Odesílám dotazník na webhook:', data);
+            console.log('📋 CustomerID:', data.customerId);
+            console.log('📦 Coffee data:', data.coffeeFormData);
+            console.log('📝 Promotion data:', data.promotion);
+            
+            // Odeslání dat na webhook
+            fetch('https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Display elegant message instead of alert()
+                    showSuccessMessage('Thank you for completing the questionnaire! We will contact you soon with more information.');
+                    
+                    // Hide form and display thank you message
+                    const surveyForm = document.querySelector('.survey-form');
+                    const thankYouSection = document.querySelector('.thank-you-section');
+                    
+                    if (surveyForm) {
+                        surveyForm.style.display = 'none';
+                    }
+                    
+                    if (thankYouSection) {
+                        thankYouSection.innerHTML = `
+                            <h1>Thank You for Your Interest!</h1>
+                            <p style="font-size: 20px; margin-bottom: 30px;">The questionnaire was successfully submitted.</p>
+                            <p style="font-size: 18px; color: var(--color-white); opacity: 0.9;">We will contact you soon with more information about the affiliate program.</p>
+                        `;
+                    }
+                } else {
+                    throw new Error('Sending error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showErrorMessage('An error occurred while submitting the questionnaire. Please try again.');
+            });
+        });
+
+        // === FUNKCE PRO ZOBRAZENÍ ZPRÁV ===
+        function showSuccessMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #28a745;
+                color: white;
+                padding: 20px 25px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+                z-index: 10000;
+                font-weight: 600;
+                font-size: 16px;
+                max-width: 400px;
+                animation: slideInRight 0.5s ease-out;
+            `;
+            messageDiv.textContent = message;
+            
+            // Přidání CSS animace
+            if (!document.querySelector('#message-animation-style')) {
+                const style = document.createElement('style');
+                style.id = 'message-animation-style';
+                style.textContent = `
+                    @keyframes slideInRight {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOutRight {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(messageDiv);
+            
+            // Automatické odebrání zprávy po 5 sekundách
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOutRight 0.5s ease-out';
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.parentNode.removeChild(messageDiv);
+                    }
+                }, 500);
+            }, 5000);
+        }
+
+        function showErrorMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #dc3545;
+                color: white;
+                padding: 20px 25px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+                z-index: 10000;
+                font-weight: 600;
+                font-size: 16px;
+                max-width: 400px;
+                animation: slideInRight 0.5s ease-out;
+            `;
+            messageDiv.textContent = message;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Automatické odebrání zprávy po 7 sekundách (delší pro chybové zprávy)
+            setTimeout(() => {
+                messageDiv.style.animation = 'slideOutRight 0.5s ease-out';
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.parentNode.removeChild(messageDiv);
+                    }
+                }, 500);
+            }, 7000);
+        }
+
+        // === ZOBRAZENÍ/SKRYTÍ TEXTOVÉHO POLE PRO "INÉ" ===
+        function initPromotionOtherToggle() {
+            const promotionOtherCheckbox = document.getElementById('promotion-other');
+            const promotionOtherInput = document.getElementById('promotion-other-input');
+            const promotionOtherText = document.getElementById('promotion-other-text');
+            
+            console.log('Inicializace toggle pre Iné:', {
+                checkbox: promotionOtherCheckbox,
+                input: promotionOtherInput,
+                text: promotionOtherText
+            });
+            
+            if (promotionOtherCheckbox && promotionOtherInput) {
+                promotionOtherCheckbox.addEventListener('change', function() {
+                    console.log('Checkbox "Iné" zmenen:', this.checked);
+                    
+                    if (this.checked) {
+                        // Nastavíme transition a počáteční stav
+                        promotionOtherInput.style.transition = 'all 0.3s ease';
+                        promotionOtherInput.style.opacity = '0';
+                        promotionOtherInput.style.transform = 'translateY(-10px)';
+                        promotionOtherInput.style.display = 'block';
+                        
+                        // Animace zobrazení
+                        setTimeout(() => {
+                            promotionOtherInput.style.opacity = '1';
+                            promotionOtherInput.style.transform = 'translateY(0)';
+                        }, 50);
+                    } else {
+                        promotionOtherInput.style.opacity = '0';
+                        promotionOtherInput.style.transform = 'translateY(-10px)';
+                        setTimeout(() => {
+                            promotionOtherInput.style.display = 'none';
+                            if (promotionOtherText) {
+                                promotionOtherText.value = ''; // Vymaže text pri odškrtnutí
+                            }
+                        }, 300);
+                    }
+                });
+            } else {
+                console.error('Nepodarilo sa nájsť elementy pre toggle "Iné"');
+            }
+        }
+
+        // === ANIMACE PO NAČTENÍ STRÁNKY ===
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializace toggle pro "Iné"
+            initPromotionOtherToggle();
+            
+            // Načtení dat z localStorage (pokud přišel uživatel z coffee formuláře)
+            const coffeeFormData = localStorage.getItem('coffeeFormData');
+            if (coffeeFormData) {
+                try {
+                    const data = JSON.parse(coffeeFormData);
+                    console.log('Načtena data z coffee formulára:', data);
+                    
+                    // Aktualizace děkovné zprávy
+                    const thankYouSection = document.querySelector('.thank-you-section h1');
+                    if (thankYouSection) {
+                        thankYouSection.textContent = `Thank You for Your Interest!`;
+                    }
+                    
+                    // Vyčištění localStorage po použití
+                    localStorage.removeItem('coffeeFormData');
+                } catch (error) {
+                    console.error('Chyba pri načítaní dát z localStorage:', error);
+                }
+            }
+            
+            // Inicializace progress tracking
+            addProgressTrackingListeners();
+            updateProgressBar(); // Počáteční stav
+            
+            const thankYouSection = document.querySelector('.thank-you-section');
+            const surveyForm = document.querySelector('.survey-form');
+            
+            setTimeout(() => {
+                thankYouSection.style.opacity = '0';
+                thankYouSection.style.transform = 'translateY(-20px)';
+                thankYouSection.style.transition = 'all 0.5s ease';
+                thankYouSection.style.opacity = '1';
+                thankYouSection.style.transform = 'translateY(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                surveyForm.style.opacity = '0';
+                surveyForm.style.transform = 'translateY(20px)';
+                surveyForm.style.transition = 'all 0.5s ease';
+                surveyForm.style.opacity = '1';
+                surveyForm.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
+
