@@ -451,6 +451,12 @@
                         </div>
                     </div>
 
+                    <!-- Milyen időpontban hívhatunk -->
+                    <div class="form-group">
+                        <label for="call-time">Milyen időpontban hívhatunk?</label>
+                        <input type="text" id="call-time" name="call-time" placeholder="pl. 9:00-17:00, 18:00 után, hétvégék..." required>
+                    </div>
+
                     <button type="submit" class="btn">Űrlap elküldése</button>
                     
                     <p style="text-align: center; margin-top: 20px; font-size: 15px; color: rgba(255,255,255,0.8); font-style: italic; line-height: 1.6;">
@@ -463,7 +469,7 @@
 
     <script>
         function updateProgressBar() {
-            const totalSections = 3;
+            const totalSections = 4;
             let completedSections = 0;
             
             const profession = document.getElementById('profession');
@@ -478,6 +484,11 @@
             
             const promotion = document.querySelectorAll('input[name="promotion[]"]:checked');
             if (promotion.length > 0) {
+                completedSections++;
+            }
+            
+            const callTime = document.getElementById('call-time');
+            if (callTime && callTime.value.trim() !== '') {
                 completedSections++;
             }
             
@@ -497,6 +508,11 @@
             const professionField = document.getElementById('profession');
             if (professionField) {
                 professionField.addEventListener('input', updateProgressBar);
+            }
+            
+            const callTimeField = document.getElementById('call-time');
+            if (callTimeField) {
+                callTimeField.addEventListener('input', updateProgressBar);
             }
             
             document.querySelectorAll('input[type="radio"]').forEach(radio => {

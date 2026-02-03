@@ -581,6 +581,12 @@
                         </div>
                     </div>
 
+                    <!-- La ce oră vă putem suna -->
+                    <div class="form-group">
+                        <label for="call-time">La ce oră vă putem suna?</label>
+                        <input type="text" id="call-time" name="call-time" placeholder="ex. 9:00-17:00, după 18:00, weekenduri..." required>
+                    </div>
+
                     <button type="submit" class="btn">Trimite formularul</button>
                     
                     <p style="text-align: center; margin-top: 20px; font-size: 15px; color: rgba(255,255,255,0.8); font-style: italic; line-height: 1.6;">
@@ -594,7 +600,7 @@
     <script>
         // === PROGRESS BAR LOGIKA ===
         function updateProgressBar() {
-            const totalSections = 3; // Celkový počet aktivních sekcí formuláře (nezakomentované)
+            const totalSections = 4; // Celkový počet aktivních sekcí formuláře (nezakomentované)
             let completedSections = 0;
             
             // 1. Profese (textové pole)
@@ -612,6 +618,12 @@
             // 3. Způsob propagace (checkboxy)
             const promotion = document.querySelectorAll('input[name="promotion[]"]:checked');
             if (promotion.length > 0) {
+                completedSections++;
+            }
+            
+            // 4. La ce oră vă putem suna (textové pole)
+            const callTime = document.getElementById('call-time');
+            if (callTime && callTime.value.trim() !== '') {
                 completedSections++;
             }
             
@@ -635,6 +647,12 @@
             const professionField = document.getElementById('profession');
             if (professionField) {
                 professionField.addEventListener('input', updateProgressBar);
+            }
+            
+            // Textové pole - La ce oră vă putem suna
+            const callTimeField = document.getElementById('call-time');
+            if (callTimeField) {
+                callTimeField.addEventListener('input', updateProgressBar);
             }
             
             // Radio buttons
