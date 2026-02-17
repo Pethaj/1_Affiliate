@@ -411,6 +411,13 @@
             opacity: 0.9;
         }
 
+        /* === ANIMACE PRO VALIDACI === */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
         /* === RESPONZIVNÍ DESIGN === */
         @media (max-width: 768px) {
             .container {
@@ -500,7 +507,7 @@
                 
                 <h2>Dotazník pro nové partnery</h2>
                 <p style="font-size: 20px; margin-bottom: 30px;">Každý partner je pro nás jedinečný. Proto bychom rádi věděli, jakým způsobem chcete sdílet BEWIT produkty a co vám v tom máme usnadnit. Díky tomu vám dokážeme připravit přesně takové nástroje, podporu a podklady, které využijete nejlépe.</p>
-                <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437">
+                <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437" novalidate>
                     
                     <!-- Profese -->
                     <div class="form-group">
@@ -676,6 +683,12 @@
                         </div>
                     </div> -->
 
+                    <!-- Odkazy na vaše profily -->
+                    <div class="form-group">
+                        <label for="social-profiles">Odkazy na vaše profily</label>
+                        <input type="text" id="social-profiles" name="social-profiles" placeholder="FB, Instagram, YouTube a další">
+                    </div>
+
                     <!-- V kolik hodin vám můžeme zavolat -->
                     <div class="form-group">
                         <label for="call-time">V kolik hodin vám můžeme zavolat?</label>
@@ -695,7 +708,7 @@
     <script>
         // === PROGRESS BAR LOGIKA ===
         function updateProgressBar() {
-            const totalSections = 4; // Celkový počet aktivních sekcí formuláře (nezakomentované)
+            const totalSections = 5; // Celkový počet aktivních sekcí formuláře (nezakomentované)
             let completedSections = 0;
             
             // 1. Profese (textové pole)
@@ -716,7 +729,13 @@
                 completedSections++;
             }
             
-            // 4. V kolik hodin vám můžeme zavolat (textové pole)
+            // 4. Odkazy na vaše profily (textové pole)
+            const socialProfiles = document.getElementById('social-profiles');
+            if (socialProfiles && socialProfiles.value.trim() !== '') {
+                completedSections++;
+            }
+            
+            // 5. V kolik hodin vám můžeme zavolat (textové pole)
             const callTime = document.getElementById('call-time');
             if (callTime && callTime.value.trim() !== '') {
                 completedSections++;
@@ -754,6 +773,12 @@
             const professionField = document.getElementById('profession');
             if (professionField) {
                 professionField.addEventListener('input', updateProgressBar);
+            }
+            
+            // Textové pole - Odkazy na vaše profily
+            const socialProfilesField = document.getElementById('social-profiles');
+            if (socialProfilesField) {
+                socialProfilesField.addEventListener('input', updateProgressBar);
             }
             
             // Textové pole - V kolik hodin vám můžeme zavolat
@@ -840,9 +865,84 @@
             return `${day}.${month}.${year}`;
         }
 
+        // === VALIDACE FORMULÁŘE ===
+        function validateForm() {
+            const errors = [];
+            
+            // 1. Kontrola profese (textové pole)
+            const profession = document.getElementById('profession');
+            if (!profession || profession.value.trim() === '') {
+                errors.push({
+                    field: profession,
+                    message: 'Prosím vyplňte informace o sobě'
+                });
+            }
+            
+            // 2. Kontrola velikosti sítě (radio buttons)
+            const networkSize = document.querySelector('input[name="network-size"]:checked');
+            if (!networkSize) {
+                errors.push({
+                    field: document.querySelector('input[name="network-size"]'),
+                    message: 'Prosím vyberte velikost vašeho dosahu'
+                });
+            }
+            
+            // 3. Kontrola způsobu propagace (checkboxy - alespoň jeden)
+            const promotion = document.querySelectorAll('input[name="promotion[]"]:checked');
+            if (promotion.length === 0) {
+                errors.push({
+                    field: document.querySelector('input[name="promotion[]"]'),
+                    message: 'Prosím vyberte alespoň jeden způsob sdílení BEWIT produktů'
+                });
+            }
+            
+            // 4. Pole social-profiles je nepovinné, takže ho nekontrolujeme
+            
+            // 5. Kontrola času volání (textové pole)
+            const callTime = document.getElementById('call-time');
+            if (!callTime || callTime.value.trim() === '') {
+                errors.push({
+                    field: callTime,
+                    message: 'Prosím vyplňte, v kolik hodin vám můžeme zavolat'
+                });
+            }
+            
+            return errors;
+        }
+
         // === FORMULÁŘ ODESLÁNÍ ===
         document.getElementById('affiliate-survey').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Validace formuláře
+            const errors = validateForm();
+            if (errors.length > 0) {
+                // Zobrazit chybovou zprávu
+                const firstError = errors[0];
+                showErrorMessage(firstError.message);
+                
+                // Posunout na první chybné pole
+                if (firstError.field) {
+                    firstError.field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Zvýraznit sekci s chybou
+                    const formGroup = firstError.field.closest('.form-group');
+                    if (formGroup) {
+                        formGroup.style.animation = 'shake 0.5s';
+                        formGroup.style.border = '2px solid #dc3545';
+                        formGroup.style.borderRadius = '8px';
+                        formGroup.style.padding = '10px';
+                        
+                        setTimeout(() => {
+                            formGroup.style.animation = '';
+                            formGroup.style.border = '';
+                            formGroup.style.padding = '';
+                        }, 2000);
+                    }
+                }
+                
+                return false;
+            }
             
             const formData = new FormData(this);
             

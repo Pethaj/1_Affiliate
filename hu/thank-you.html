@@ -295,6 +295,13 @@
             opacity: 0.9;
         }
 
+        /* === ANIMACE PRO VALIDACI === */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
@@ -373,7 +380,7 @@
             <div class="survey-form">
                 <h2>Kérdőív új partnerek számára</h2>
                 <p style="font-size: 20px; margin-bottom: 30px;">Minden partner egyedi számunkra. Ezért szeretnénk tudni, hogyan szeretnék megosztani a BEWIT termékeket, és miben tudjuk megkönnyíteni a dolgukat. Így pontosan olyan eszközöket, támogatást és anyagokat tudunk készíteni, amelyeket a legjobban tudnak használni.</p>
-                <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437">
+                <form id="affiliate-survey" method="POST" action="https://n8n.srv980546.hstgr.cloud/webhook/a41e8f87-dc1d-4aab-beaa-6c81f320b437" novalidate>
                     
                     <div class="form-group">
                         <label for="profession">Meséljen röviden magáról?</label>
@@ -451,6 +458,12 @@
                         </div>
                     </div>
 
+                    <!-- Linkek a profilokhoz -->
+                    <div class="form-group">
+                        <label for="social-profiles">Linkek a profilokhoz</label>
+                        <input type="text" id="social-profiles" name="social-profiles" placeholder="FB, Instagram, YouTube és mások">
+                    </div>
+
                     <!-- Milyen időpontban hívhatunk -->
                     <div class="form-group">
                         <label for="call-time">Milyen időpontban hívhatunk?</label>
@@ -469,7 +482,7 @@
 
     <script>
         function updateProgressBar() {
-            const totalSections = 4;
+            const totalSections = 5;
             let completedSections = 0;
             
             const profession = document.getElementById('profession');
@@ -484,6 +497,11 @@
             
             const promotion = document.querySelectorAll('input[name="promotion[]"]:checked');
             if (promotion.length > 0) {
+                completedSections++;
+            }
+            
+            const socialProfiles = document.getElementById('social-profiles');
+            if (socialProfiles && socialProfiles.value.trim() !== '') {
                 completedSections++;
             }
             
@@ -508,6 +526,11 @@
             const professionField = document.getElementById('profession');
             if (professionField) {
                 professionField.addEventListener('input', updateProgressBar);
+            }
+            
+            const socialProfilesField = document.getElementById('social-profiles');
+            if (socialProfilesField) {
+                socialProfilesField.addEventListener('input', updateProgressBar);
             }
             
             const callTimeField = document.getElementById('call-time');
@@ -553,8 +576,72 @@
             return `${day}.${month}.${year}`;
         }
 
+        function validateForm() {
+            const errors = [];
+            
+            const profession = document.getElementById('profession');
+            if (!profession || profession.value.trim() === '') {
+                errors.push({
+                    field: profession,
+                    message: 'Kérjük, mondjon el röviden magáról'
+                });
+            }
+            
+            const networkSize = document.querySelector('input[name="network-size"]:checked');
+            if (!networkSize) {
+                errors.push({
+                    field: document.querySelector('input[name="network-size"]'),
+                    message: 'Kérjük, válassza ki az elérésének nagyságát'
+                });
+            }
+            
+            const promotion = document.querySelectorAll('input[name="promotion[]"]:checked');
+            if (promotion.length === 0) {
+                errors.push({
+                    field: document.querySelector('input[name="promotion[]"]'),
+                    message: 'Kérjük, válasszon legalább egy módot a BEWIT termékek megosztására'
+                });
+            }
+            
+            const callTime = document.getElementById('call-time');
+            if (!callTime || callTime.value.trim() === '') {
+                errors.push({
+                    field: callTime,
+                    message: 'Kérjük, mondja meg, milyen időpontban hívhatunk'
+                });
+            }
+            
+            return errors;
+        }
+
         document.getElementById('affiliate-survey').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            const errors = validateForm();
+            if (errors.length > 0) {
+                const firstError = errors[0];
+                showErrorMessage(firstError.message);
+                
+                if (firstError.field) {
+                    firstError.field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    const formGroup = firstError.field.closest('.form-group');
+                    if (formGroup) {
+                        formGroup.style.animation = 'shake 0.5s';
+                        formGroup.style.border = '2px solid #dc3545';
+                        formGroup.style.borderRadius = '8px';
+                        formGroup.style.padding = '10px';
+                        
+                        setTimeout(() => {
+                            formGroup.style.animation = '';
+                            formGroup.style.border = '';
+                            formGroup.style.padding = '';
+                        }, 2000);
+                    }
+                }
+                
+                return false;
+            }
             
             const formData = new FormData(this);
             const data = {};
